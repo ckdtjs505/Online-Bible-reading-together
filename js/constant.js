@@ -38,7 +38,7 @@ const doc = {
     하박국 : 'hab', 
     스바냐 : 'zep', 
     학개 : 'hag', 
-    스가랴 : 'zep', 
+    스가랴 : 'zec', 
     말라기 : 'mal', 
     마태복음 : 'mat', 
     마가복음 : 'mark', 

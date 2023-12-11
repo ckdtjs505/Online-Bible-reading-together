@@ -1,7 +1,14 @@
 class Main {
     constructor(){
-        const core = new BibleEntity();
-        core.getTodayData();
+        this.core = new BibleEntity();
+        this.calender = new Calendar(this.core);
+        // this.core.getTodayData();
+
+        const currentDate = new Date();
+        const month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+        const day = currentDate.getDate();
+        this.core.getTodayData(month, day)
+        this.calender.create();
     }
 }
 
@@ -11,10 +18,7 @@ class BibleEntity {
         this.info = [];
     }
 
-    getTodayData(){
-        const currentDate = new Date();
-        const month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-        const day = currentDate.getDate();
+    getTodayData(month, day){
         const { 
             lang, doc, start, end
         } = todayOrder( month, day);
@@ -41,3 +45,34 @@ class BibleEntity {
     }
 }
 
+class Calendar {
+    constructor(core) {
+        this.core = core;
+        this.inst = null;
+    }
+
+    create(){
+        this.inst = mobiscroll.eventcalendar('#demo-desktop-month-view', {
+            theme: 'windows',
+            themeVariant: 'light',
+            clickToCreate: false,
+            dragToCreate: false,
+            dragToMove: false,
+            dragToResize: false,
+            eventDelete: false,
+            view: {
+                calendar: { 
+                    labels: true,
+                    type: 'week',
+                    size: 1 
+                },
+            },
+            onCellClick :  ({date}, inst) => {
+                const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+                const day = date.getDate();
+                this.core.getTodayData(month, day)
+            }, 
+
+        });
+    }
+}

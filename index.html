@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400&display=swap" rel="stylesheet">
+    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+    <script src="js/mobiscroll.javascript.min.js"></script>
     <title>Document</title>
     <script src="./js/constant.js"></script>
     <script src="./js/main.js"></script>
+    
 </head>
 
-<body>
-    <div id='title'> 함 온 성(함께하는 온라인 성경통독 )</div>
-    <section>
-        <div id="content">
+<body style="font-family: 'Hahmlet', serif;">
+    <div id='title' style="text-align: center; font-size: 2rem;"> 함 온 성(함께하는 온라인 성경통독 )</div>
+
+    <div id="demo-desktop-month-view"></div>
+
+    <section style="border-top: 1px solid; border-bottom: 1px solid; margin-top: 0.5rem; padding-top: 1rem; padding-bottom: 1rem; ">
+        <div id="content" >
 
         </div>
     </section>
@@ -25,10 +34,15 @@
             🙏 한줄 기도 : <br> 
             <input type="text" style="width:95%; height:5rem;"><br> 
             제 198 일차 완료했습니다. <br> 
+
+            <button> 복사하기 </button>
+            <button> 저장하기 </button>
         </div>
     </section>
     <script>
         new Main()
+
+      
     </script>
 </body>
 </html>
