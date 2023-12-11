@@ -30,22 +30,48 @@
     </section>
     <br>
     <section>
+
+        <script> 
+        
+        function copyToClipboard(elementId) {
+            // 특정 div 영역 선택
+            const element = document.getElementById(elementId);
+
+            // Range 객체 생성
+            const range = document.createRange();
+            range.selectNode(element);
+
+            // 현재 선택 영역을 Range에 할당
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            // 복사 명령 실행
+            document.execCommand('copy');
+
+            // 선택 영역 지우기
+            window.getSelection().removeAllRanges();
+        }
+        </script>
+
         <div id="userContent">
-            📖 오늘 내게 주신 말씀 : <br>  
-            <div id="myMessage">
-
+            <div id="submitdata">
+                📖 오늘 내게 주신 말씀 : <br>  
+                <div id="myMessage">
+    
+                </div>
+                🙏 한줄 기도 : <br> 
+                <input id="pray" type="text" style="width:95%; height:5rem;">
+                <br> 
+                제 198 일차 완료했습니다. <br> 
             </div>
-            🙏 한줄 기도 : <br> 
-            <input type="text" style="width:95%; height:5rem;">
-            <br> 
-            제 198 일차 완료했습니다. <br> 
 
-            <button> 복사하기 </button>
-            <button> 저장하기 </button>
+            <button onclick="copyToClipboard('submitdata')"> 복사하기 </button>
         </div>
     </section>
     <script>
         new Main()
+
+
     </script>
 </body>
 </html>
