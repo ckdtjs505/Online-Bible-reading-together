@@ -40,8 +40,15 @@ class BibleEntity {
         }
 
         document.getElementById('content').innerHTML =  this.info.map( ({ chapter, message, verse}) => {
-            return `<div> ${chapter}:${verse} ${message} </div>`
+            return `<div> <span class='mes'> ${chapter}:${verse} ${message} </span> </div>`
         }).join(' <br> ')
+
+        document.querySelectorAll('.mes').forEach( (ele) => {
+
+            ele.addEventListener('click', () => {
+                ele.classList.toggle('highlight');
+            } )
+        })
     }
 }
 
