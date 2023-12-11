@@ -75,32 +75,44 @@ const todayOrder = (month, day) => {
         '12_11' : {
             lang : 'kor',
             doc : doc['스바냐'],
+            pos : '스바냐',
             start: '1:1' ,
-            end: '100:1' // 끝가지 다읽기
+            end: '3:20', // 끝가지 다읽기
+            daycnt: 199
+
         },
         '12_12' : {
             lang : 'kor',
             doc : doc['학개'],
+            pos : '학개',
             start: '1:1' ,
-            end: '100:1' // 끝가지 다읽기
+            end: '2:23', // 끝가지 다읽기
+            daycnt: 200
         },
         '12_13' : {
             lang : 'kor',
             doc : doc['스가랴'],
+            pos : '스가랴',
             start: '1:1' ,
-            end: '8:100' // 끝가지 다읽기
+            end: '8:23', // 끝가지 다읽기
+            daycnt: 201
         },
         '12_14' : {
             lang : 'kor',
             doc : doc['스가랴'],
+            pos : '스가랴',
             start: '9:1' ,
-            end: '14:100' // 끝가지 다읽기
+            end: '14:21', // 끝가지 다읽기
+            daycnt: 202
+
         },
         '12_15' : {
             lang : 'kor',
             doc : doc['말라기'],
+            pos : '말라기',
             start: '1:1' ,
-            end: '100:100' // 끝가지 다읽기
+            end: '100:100', // 끝가지 다읽기
+            daycnt: 203
         },
     }
     
