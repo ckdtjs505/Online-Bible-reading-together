@@ -23,6 +23,7 @@ class BibleEntity {
             lang, doc, start, end
         } = todayOrder( month, day);
 
+        document.getElementById('content').innerHTML = '데이터를 가져오고 있습니다.'
         fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}&end=${end}`)
         .then( (response) => {
             return response.json()
@@ -30,6 +31,8 @@ class BibleEntity {
         .then( data => {
             this.info = data;
             this.setUI()
+
+            
         })
     }
 
@@ -46,10 +49,6 @@ class BibleEntity {
         document.querySelectorAll('.mes').forEach( (ele) => {
 
             ele.addEventListener('click', () => {
-                ele.classList.toggle('highlight');
-            } )
-
-            ele.addEventListener('touchstart', () => {
                 ele.classList.toggle('highlight');
             } )
         })
