@@ -48,7 +48,13 @@ class BibleEntity {
             ele.addEventListener('click', () => {
                 ele.classList.toggle('highlight');
             } )
+
+            ele.addEventListener('touchstart', () => {
+                ele.classList.toggle('highlight');
+            } )
         })
+
+        
     }
 }
 
