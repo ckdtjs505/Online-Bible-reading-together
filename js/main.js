@@ -8,7 +8,26 @@ class Main {
         const day = currentDate.getDate();
         this.core.getTodayData(month, day)
         this.calender.create();
+
+        document.getElementById('name').addEventListener('click', () => {
+            document.getElementById('name').style.display = 'none';
+            document.getElementById('nameInput').style.display = 'block';
+        })
+
+        document.getElementById('nameInput').addEventListener('', () => {
+
+        })
     }
+
+    createUser(user) {
+        const userName = document.createElement('strong');
+        userName.innerHTML = `${user}`
+        userName.className = 'userName';  
+    
+        greetingUser.appendChild(userName);
+        userName.addEventListener('click', handleuserClick)
+    }
+    
 }
 
 class BibleEntity {
@@ -31,7 +50,6 @@ class BibleEntity {
             this.info = data;
             this.setUI()
 
-
             const startmatch = start.match(/^([^:]+)/);
             const endmatch = end.match(/^([^:]+)/);
 
@@ -40,6 +58,7 @@ class BibleEntity {
             const endmatchResult = endmatch ? endmatch[1] : null;
 
             document.querySelector("#todaymessage").innerHTML = `${pos} ${startmatchResult}장 ~ ${endmatchResult}장(${daycnt}일차)`
+            document.getElementById("day").innerHTML = daycnt
         })
     }
 

@@ -3,3 +3,23 @@
 .highlight {
     background-color: yellow;
 }
+
+#userContent {
+    font-size: large;
+    padding: 10px;
+    text-align: left;
+    top: 0;
+}
+
+#name {
+    
+}
+
+#name:hover {
+    border-bottom: 1px solid;
+    cursor: pointer;
+}
+
+#nameInput {
+    
+}

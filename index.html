@@ -53,8 +53,10 @@
         }
         </script>
 
-        <div id="userContent">
+        <div id="userContent" >
             <div id="submitdata">
+                🌼이름 : <input id="nameInput"  value ='' />  <br>
+
                 📖 오늘 내게 주신 말씀 : <br>  
                 <div id="myMessage">
     
@@ -62,7 +64,7 @@
                 🙏 한줄 기도 : <br> 
                 <input id="pray" type="text" style="width:95%; height:5rem;">
                 <br> 
-                제 198 일차 완료했습니다. <br> 
+                제 <span id="day"> </span> 일차 완료했습니다. <br> 
             </div>
 
             <button onclick="copyToClipboard('submitdata')"> 복사하기 </button>
