@@ -41,6 +41,12 @@ class BibleEntity {
             lang, doc, start, end, pos, daycnt
         } = todayOrder( month, day);
 
+
+        if( doc ==="none"){
+            document.getElementById('content').innerHTML = '오늘은 함온성이 없습니다'
+            return;
+        }
+
         document.getElementById('content').innerHTML = '데이터를 가져오고 있습니다.'
         fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}&end=${end}`)
         .then( (response) => {

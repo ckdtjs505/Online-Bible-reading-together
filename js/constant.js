@@ -114,9 +114,58 @@ const todayOrder = (month, day) => {
             end: '100:100', // 끝가지 다읽기
             daycnt: 203
         },
+        '1_2': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '1:1' ,
+            end: '4:25', // 끝가지 다읽기
+            daycnt: 2
+        },
+        '1_3': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '5:1' ,
+            end: '7:29', // 끝가지 다읽기
+            daycnt: 3
+        },
+        '1_4': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '8:1' ,
+            end: '10:200', // 끝가지 다읽기
+            daycnt: 4
+        },
+        '1_5': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '11:1' ,
+            end: '14:200', // 끝가지 다읽기
+            daycnt: 5
+        },
+        '1_8': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '15:1' ,
+            end: '18:200', // 끝가지 다읽기
+            daycnt: 6
+        },
+
+        'none' : {
+            lang : 'kor',
+            doc : 'none',
+            pos : 'none',
+            start: 'none' ,
+            end: 'none', // 끝가지 다읽기
+            daycnt: 'none'
+        }
     }
     
 
-    return table[`${month}_${day}`] || table['12_15'];
+    return table[`${month}_${day}`] || table['none'];
 
 }
