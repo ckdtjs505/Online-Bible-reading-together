@@ -1,22 +1,22 @@
 class Main {
     constructor(){
         this.core = new BibleEntity();
-        this.calender = new Calendar(this.core);
+        // this.calender = new Calendar(this.core);
 
         const currentDate = new Date();
         const month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
         const day = currentDate.getDate();
         this.core.getTodayData(month, day)
-        this.calender.create();
+        // this.calender.create();
 
-        document.getElementById('name').addEventListener('click', () => {
-            document.getElementById('name').style.display = 'none';
-            document.getElementById('nameInput').style.display = 'block';
-        })
+        // document.getElementById('name').addEventListener('click', () => {
+        //     document.getElementById('name').style.display = 'none';
+        //     document.getElementById('nameInput').style.display = 'block';
+        // })
 
-        document.getElementById('nameInput').addEventListener('', () => {
+        // document.getElementById('nameInput').addEventListener('', () => {
 
-        })
+        // })
     }
 
     createUser(user) {
@@ -93,34 +93,14 @@ class BibleEntity {
     }
 }
 
-class Calendar {
-    constructor(core) {
-        this.core = core;
-        this.inst = null;
-    }
+class Util {
+    static findElementByTextRemove (){
+        var elements = document.getElementsByTagName("*");
 
-    create(){
-        this.inst = mobiscroll.eventcalendar('#demo-desktop-month-view', {
-            theme: 'windows',
-            themeVariant: 'light',
-            clickToCreate: false,
-            dragToCreate: false,
-            dragToMove: false,
-            dragToResize: false,
-            eventDelete: false,
-            view: {
-                calendar: { 
-                    labels: true,
-                    type: 'week',
-                    size: 1 
-                },
-            },
-            onCellClick :  ({date}, inst) => {
-                const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-                const day = date.getDate();
-                this.core.getTodayData(month, day)
-            }, 
-
-        });
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].textContent === text) {
+                elements[i].remove();
+            }
+        }
     }
 }
