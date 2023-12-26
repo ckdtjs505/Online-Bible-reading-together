@@ -187,8 +187,6 @@ function calendarChoiceDay(column) {
     // @param 선택일 클래스명 변경
     column.classList.add("choiceDay");
 
-    const month = nowDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-    const day = nowDate.getDate();
     main.core.getTodayData(column.dataset.month, column.dataset.day)
 }
 
