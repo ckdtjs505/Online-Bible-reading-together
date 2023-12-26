@@ -154,6 +154,38 @@ const todayOrder = (month, day) => {
             end: '18:200', // 끝가지 다읽기
             daycnt: 6
         },
+        '1_9': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '19:1' ,
+            end: '21:200', // 끝가지 다읽기
+            daycnt: 7
+        },
+        '1_10': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '22:1' ,
+            end: '25:200', // 끝가지 다읽기
+            daycnt: 8
+        },
+        '1_11': {
+            lang : 'kor',
+            doc : doc['마태복음'],
+            pos : '마태복음',
+            start: '26:1' ,
+            end: '28:200', // 끝가지 다읽기
+            daycnt: 9
+        },
+        '1_12': {
+            lang : 'kor',
+            doc : doc['마가복음'],
+            pos : '마가복음',
+            start: '1:1' ,
+            end: '4:200', // 끝가지 다읽기
+            daycnt: 10
+        },
 
         'none' : {
             lang : 'kor',
