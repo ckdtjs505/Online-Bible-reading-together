@@ -78,7 +78,7 @@ function buildCalendar() {
             if( pos ){
                 column.innerHTML = `
                     ${autoLeftPad(day, 2)}<br>
-                    <div style="font-size: 0.5rem"> ${pos} ${start}-${end}장  </div>
+                    <div style="font-size: 0.5rem"> ${pos} <br> ${start}-${end}장  </div>
                 `
             }
 
