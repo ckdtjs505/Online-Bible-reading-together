@@ -80,8 +80,13 @@ function buildCalendar() {
                     ${autoLeftPad(day, 2)}<br>
                     <div style="font-size: 0.5rem"> ${pos} <br> ${start}-${end}장  </div>
                 `
+
+                // column.style.backgroundImage = 'url("../css/check.png")'
+                // column.style.backgroundRepeat =  'no-repeat';
+                // column.style.backgroundPosition =  'center';
             }
 
+            
             // @param 일요일인 경우
             if(dom % 7 == 1) {
                 column.style.color = "#FF4D4D";
@@ -174,6 +179,8 @@ function buildCalendar() {
  */
 function calendarChoiceDay(column) {
 
+    
+    window.currentColumn = column;
     // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
     if(document.getElementsByClassName("choiceDay")[0]) {
         

@@ -49,8 +49,6 @@ class BibleEntity {
         .then( data => {
             this.info = data;
             this.setUI()
-
-
         })
     }
 
@@ -82,17 +80,5 @@ class BibleEntity {
         })
 
         
-    }
-}
-
-class Util {
-    static findElementByTextRemove (){
-        var elements = document.getElementsByTagName("*");
-
-        for (var i = 0; i < elements.length; i++) {
-            if (elements[i].textContent === text) {
-                elements[i].remove();
-            }
-        }
     }
 }
