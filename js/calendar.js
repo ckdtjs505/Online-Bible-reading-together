@@ -74,7 +74,7 @@ function buildCalendar() {
             // @param 평일 날짜 데이터 삽입
             column.innerText = autoLeftPad(day, 2);
             console.log()
-            const {pos,start, end} = todayOrder(toDay.getMonth() + 1, day)
+            const {pos,start, end, daycnt} = todayOrder(toDay.getMonth() + 1, day)
             if( pos ){
                 column.innerHTML = `
                     ${autoLeftPad(day, 2)}<br>
@@ -84,6 +84,8 @@ function buildCalendar() {
                 // column.style.backgroundImage = 'url("../css/check.png")'
                 // column.style.backgroundRepeat =  'no-repeat';
                 // column.style.backgroundPosition =  'center';
+
+                column.dataset.daycnt = daycnt;
             }
 
             

@@ -68,15 +68,17 @@
             // 선택 영역 지우기
             window.getSelection().removeAllRanges();
 
-            const queryParams = new URLSearchParams({
-                "name" : 'window.currentName',
-                "2" : 'ok',
-            }).toString();
-        
-            fetch(`https://script.google.com/macros/s/AKfycby9z5zWjei-7AMxucZSt0GADI6hLnl4e-Pe8GLwW5Xajt5OF4puqz0jeuBTVns81vyP/exec?${queryParams}`, {
-                mode: 'no-cors',
-            })
+            if( window.currentColumn.dataset.daycnt  ){
+                const queryParams = new URLSearchParams({
+                    "name" : window.currentName,
+                    [window.currentColumn.dataset.daycnt] : 'ok',
+                }).toString();
 
+                fetch(`https://script.google.com/macros/s/AKfycby9z5zWjei-7AMxucZSt0GADI6hLnl4e-Pe8GLwW5Xajt5OF4puqz0jeuBTVns81vyP/exec?${queryParams}`, {
+                    mode: 'no-cors',
+                })
+            }
+        
             window.currentColumn.style.backgroundImage = 'url("../css/check.png")'
             window.currentColumn.style.backgroundRepeat =  'no-repeat';
             window.currentColumn.style.backgroundPosition =  'center';
