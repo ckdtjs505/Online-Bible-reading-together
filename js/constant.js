@@ -76,8 +76,8 @@ const todayOrder = (month, day) => {
             lang : 'kor',
             doc : doc['스바냐'],
             pos : '스바냐',
-            start: '1:1' ,
-            end: '3:20', // 끝가지 다읽기
+            start: '1' ,
+            end: '3', // 끝가지 다읽기
             daycnt: 199
 
         },
@@ -85,24 +85,24 @@ const todayOrder = (month, day) => {
             lang : 'kor',
             doc : doc['학개'],
             pos : '학개',
-            start: '1:1' ,
-            end: '2:23', // 끝가지 다읽기
+            start: '1' ,
+            end: '2', // 끝가지 다읽기
             daycnt: 200
         },
         '12_13' : {
             lang : 'kor',
             doc : doc['스가랴'],
             pos : '스가랴',
-            start: '1:1' ,
-            end: '8:23', // 끝가지 다읽기
+            start: '1' ,
+            end: '8', // 끝가지 다읽기
             daycnt: 201
         },
         '12_14' : {
             lang : 'kor',
             doc : doc['스가랴'],
             pos : '스가랴',
-            start: '9:1' ,
-            end: '14:21', // 끝가지 다읽기
+            start: '9' ,
+            end: '14', // 끝가지 다읽기
             daycnt: 202
 
         },
@@ -110,91 +110,252 @@ const todayOrder = (month, day) => {
             lang : 'kor',
             doc : doc['말라기'],
             pos : '말라기',
-            start: '1:1' ,
-            end: '100:100', // 끝가지 다읽기
+            start: '1' ,
+            end: '100', // 끝가지 다읽기
             daycnt: 203
         },
         '1_2': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '1:1' ,
-            end: '4:25', // 끝가지 다읽기
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
             daycnt: 2
         },
         '1_3': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '5:1' ,
-            end: '7:29', // 끝가지 다읽기
+            start: '5' ,
+            end: '7', // 끝가지 다읽기
             daycnt: 3
         },
         '1_4': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '8:1' ,
-            end: '10:200', // 끝가지 다읽기
+            start: '8' ,
+            end: '10', // 끝가지 다읽기
             daycnt: 4
         },
         '1_5': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '11:1' ,
-            end: '14:200', // 끝가지 다읽기
+            start: '11' ,
+            end: '14', // 끝가지 다읽기
             daycnt: 5
         },
         '1_8': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '15:1' ,
-            end: '18:200', // 끝가지 다읽기
+            start: '15' ,
+            end: '18', // 끝가지 다읽기
             daycnt: 6
         },
         '1_9': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '19:1' ,
-            end: '21:200', // 끝가지 다읽기
+            start: '19' ,
+            end: '21', // 끝가지 다읽기
             daycnt: 7
         },
         '1_10': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '22:1' ,
-            end: '25:200', // 끝가지 다읽기
+            start: '22' ,
+            end: '25', // 끝가지 다읽기
             daycnt: 8
         },
         '1_11': {
             lang : 'kor',
             doc : doc['마태복음'],
             pos : '마태복음',
-            start: '26:1' ,
-            end: '28:200', // 끝가지 다읽기
+            start: '26' ,
+            end: '28', // 끝가지 다읽기
             daycnt: 9
         },
         '1_12': {
             lang : 'kor',
             doc : doc['마가복음'],
             pos : '마가복음',
-            start: '1:1' ,
-            end: '4:200', // 끝가지 다읽기
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
             daycnt: 10
         },
-
+        '1_15': {
+            lang : 'kor',
+            doc : doc['마가복음'],
+            pos : '마가복음',
+            start: '5' ,
+            end: '8', // 끝가지 다읽기
+            daycnt: 11
+        },
+        '1_16': {
+            lang : 'kor',
+            doc : doc['마가복음'],
+            pos : '마가복음',
+            start: '9' ,
+            end: '12', // 끝가지 다읽기
+            daycnt: 12
+        },
+        '1_17': {
+            lang : 'kor',
+            doc : doc['마가복음'],
+            pos : '마가복음',
+            start: '13' ,
+            end: '16', // 끝가지 다읽기
+            daycnt: 13
+        },
+        '1_18': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 14
+        },
+        '1_19': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '5' ,
+            end: '8', // 끝가지 다읽기
+            daycnt: 15
+        },
+        '1_22': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '9' ,
+            end: '12', // 끝가지 다읽기
+            daycnt: 16
+        },
+        '1_23': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '13' ,
+            end: '15', // 끝가지 다읽기
+            daycnt: 17
+        },
+        '1_24': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '16' ,
+            end: '18', // 끝가지 다읽기
+            daycnt: 18
+        },
+        '1_25': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '19' ,
+            end: '21', // 끝가지 다읽기
+            daycnt: 19
+        },
+        '1_26': {
+            lang : 'kor',
+            doc : doc['누가복음'],
+            pos : '누가복음',
+            start: '22' ,
+            end: '24', // 끝가지 다읽기
+            daycnt: 20
+        },
+        '1_29': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 21
+        },
+        '1_30': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '5' ,
+            end: '7', // 끝가지 다읽기
+            daycnt: 22
+        },
+        '1_31': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '8' ,
+            end: '10', // 끝가지 다읽기
+            daycnt: 23
+        },
+        '2_1': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '11' ,
+            end: '13', // 끝가지 다읽기
+            daycnt: 24
+        },
+        '2_2': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '14' ,
+            end: '17', // 끝가지 다읽기
+            daycnt: 25
+        },
+        '2_3': {
+            lang : 'kor',
+            doc : doc['요한복음'],
+            pos : '요한복음',
+            start: '18' ,
+            end: '21', // 끝가지 다읽기
+            daycnt: 26
+        },
+        '2_5': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 27
+        },
+        '2_6': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '5' ,
+            end: '8', // 끝가지 다읽기
+            daycnt: 28
+        },
+        '2_7': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '9' ,
+            end: '11', // 끝가지 다읽기
+            daycnt: 29
+        },
+        '2_8': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '12' ,
+            end: '14', // 끝가지 다읽기
+            daycnt: 30
+        },
         'none' : {
             lang : 'kor',
-            doc : 'none',
-            pos : 'none',
-            start: 'none' ,
-            end: 'none', // 끝가지 다읽기
-            daycnt: 'none'
+            doc : '',
+            pos : '',
+            start: '' ,
+            end: '', // 끝가지 다읽기
+            daycnt: ''
         }
+
+        
     }
     
 

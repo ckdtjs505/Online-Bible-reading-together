@@ -7,27 +7,16 @@ class Main {
         const month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
         const day = currentDate.getDate();
         this.core.getTodayData(month, day)
-        // this.calender.create();
-
-        // document.getElementById('name').addEventListener('click', () => {
-        //     document.getElementById('name').style.display = 'none';
-        //     document.getElementById('nameInput').style.display = 'block';
-        // })
-
-        // document.getElementById('nameInput').addEventListener('', () => {
-
-        // })
+        this.name = '';
+        this.eventBind()
     }
 
-    createUser(user) {
-        const userName = document.createElement('strong');
-        userName.innerHTML = `${user}`
-        userName.className = 'userName';  
-    
-        greetingUser.appendChild(userName);
-        userName.addEventListener('click', handleuserClick)
+    eventBind(){
+        document.querySelector('#changeName').addEventListener('click', () => {
+            const name = document.querySelector("#nameInput").value;
+            document.querySelector("#name").innerHTML = name;
+        })
     }
-    
 }
 
 class BibleEntity {
@@ -42,13 +31,18 @@ class BibleEntity {
         } = todayOrder( month, day);
 
 
-        if( doc ==="none"){
-            document.getElementById('content').innerHTML = '오늘은 함온성이 없습니다'
+        if( doc ===""){
+            document.getElementById('content').innerHTML = '함온성이 없는 날'
+            document.querySelector("#todaymessage").innerHTML = ``
             return;
         }
 
+
+        document.querySelector("#todaymessage").innerHTML = `${pos} ${start}장 ~ ${end}장(${daycnt}일차)`
+        document.getElementById("day").innerHTML = daycnt
+
         document.getElementById('content').innerHTML = '데이터를 가져오고 있습니다.'
-        fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}&end=${end}`)
+        fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}:1&end=${end}:200`)
         .then( (response) => {
             return response.json()
         })
@@ -56,15 +50,7 @@ class BibleEntity {
             this.info = data;
             this.setUI()
 
-            const startmatch = start.match(/^([^:]+)/);
-            const endmatch = end.match(/^([^:]+)/);
 
-            // match가 null이 아닌 경우, ":" 앞의 부분을 가져옴
-            const startmatchResult = startmatch ? startmatch[0] : null;
-            const endmatchResult = endmatch ? endmatch[1] : null;
-
-            document.querySelector("#todaymessage").innerHTML = `${pos} ${startmatchResult}장 ~ ${endmatchResult}장(${daycnt}일차)`
-            document.getElementById("day").innerHTML = daycnt
         })
     }
 

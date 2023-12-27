@@ -73,6 +73,14 @@ function buildCalendar() {
 
             // @param 평일 날짜 데이터 삽입
             column.innerText = autoLeftPad(day, 2);
+            console.log()
+            const {pos,start, end} = todayOrder(toDay.getMonth() + 1, day)
+            if( pos ){
+                column.innerHTML = `
+                    ${autoLeftPad(day, 2)}<br>
+                    <div style="font-size: 0.5rem"> ${pos} ${start}-${end}장  </div>
+                `
+            }
 
             // @param 일요일인 경우
             if(dom % 7 == 1) {
