@@ -346,6 +346,134 @@ const todayOrder = (month, day) => {
             end: '14', // 끝가지 다읽기
             daycnt: 30
         },
+        '2_13': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '15' ,
+            end: '17', // 끝가지 다읽기
+            daycnt: 31
+        },
+        '2_14': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '18' ,
+            end: '20', // 끝가지 다읽기
+            daycnt: 32
+        },
+        '2_15': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '21' ,
+            end: '24', // 끝가지 다읽기
+            daycnt: 33
+        },
+        '2_16': {
+            lang : 'kor',
+            doc : doc['사도행전'],
+            pos : '사도행전',
+            start: '25' ,
+            end: '28', // 끝가지 다읽기
+            daycnt: 34
+        },
+        '2_17': {
+            lang : 'kor',
+            doc : doc['로마서'],
+            pos : '로마서',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 35
+        },
+        '2_19': {
+            lang : 'kor',
+            doc : doc['로마서'],
+            pos : '로마서',
+            start: '5' ,
+            end: '8', // 끝가지 다읽기
+            daycnt: 36
+        },
+        '2_20': {
+            lang : 'kor',
+            doc : doc['로마서'],
+            pos : '로마서',
+            start: '9' ,
+            end: '12', // 끝가지 다읽기
+            daycnt: 37
+        },
+        '2_21': {
+            lang : 'kor',
+            doc : doc['로마서'],
+            pos : '로마서',
+            start: '13' ,
+            end: '16', // 끝가지 다읽기
+            daycnt: 38
+        },
+        '2_22': {
+            lang : 'kor',
+            doc : doc['고린도전서'],
+            pos : '고린도전서',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 39
+        },
+        '2_23': {
+            lang : 'kor',
+            doc : doc['고린도전서'],
+            pos : '고린도전서',
+            start: '5' ,
+            end: '8', // 끝가지 다읽기
+            daycnt: 40
+        },
+        '2_24': {
+            lang : 'kor',
+            doc : doc['고린도전서'],
+            pos : '고린도전서',
+            start: '9' ,
+            end: '11', // 끝가지 다읽기
+            daycnt: 41
+        },
+        '2_26': {
+            lang : 'kor',
+            doc : doc['고린도전서'],
+            pos : '고린도전서',
+            start: '12' ,
+            end: '14', 
+            daycnt: 42
+        },
+        '2_27': {
+            lang : 'kor',
+            doc : doc['고린도전서'],
+            pos : '고린도전서',
+            start: '15' ,
+            end: '16', // 끝가지 다읽기
+            daycnt: 43
+        },
+        '2_28': {
+            lang : 'kor',
+            doc : doc['고린도후서'],
+            pos : '고린도후서',
+            start: '1' ,
+            end: '4', // 끝가지 다읽기
+            daycnt: 44
+        },
+        '2_29': {
+            lang : 'kor',
+            doc : doc['고린도후서'],
+            pos : '고린도후서',
+            start: '5' ,
+            end: '9', // 끝가지 다읽기
+            daycnt: 45
+        },
+        '3_1': {
+            lang : 'kor',
+            doc : doc['고린도후서'],
+            pos : '고린도후서',
+            start: '10' ,
+            end: '13', // 끝가지 다읽기
+            daycnt: 46
+        },
         'none' : {
             lang : 'kor',
             doc : '',
