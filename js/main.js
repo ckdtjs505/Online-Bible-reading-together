@@ -15,6 +15,7 @@ class Main {
         document.querySelector('#changeName').addEventListener('click', () => {
             const name = document.querySelector("#nameInput").value;
             document.querySelector("#name").innerHTML = name;
+            window.currentName = name;
         })
     }
 }
