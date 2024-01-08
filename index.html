@@ -64,21 +64,22 @@
 
             // 복사 명령 실행
             document.execCommand('copy');
-
-            // 선택 영역 지우기
-            window.getSelection().removeAllRanges();
+            console.log(window.getSelection().toString());
 
             if( window.currentColumn.dataset.daycnt  ){
                 const queryParams = new URLSearchParams({
                     "name" : window.currentName,
-                    [window.currentColumn.dataset.daycnt] : 'ok',
+                    [window.currentColumn.dataset.daycnt] : window.getSelection().toString(),
                 }).toString();
 
                 fetch(`https://script.google.com/macros/s/AKfycby9z5zWjei-7AMxucZSt0GADI6hLnl4e-Pe8GLwW5Xajt5OF4puqz0jeuBTVns81vyP/exec?${queryParams}`, {
                     mode: 'no-cors',
                 })
             }
-        
+
+            // 선택 영역 지우기
+            window.getSelection().removeAllRanges();
+
             window.currentColumn.style.backgroundImage = 'url("../css/check.png")'
             window.currentColumn.style.backgroundRepeat =  'no-repeat';
             window.currentColumn.style.backgroundPosition =  'center';
@@ -94,7 +95,7 @@
     
                 </div>
                 🙏 한줄 기도 : <br> 
-                <input id="pray" type="text" style="width:95%; height:5rem;">
+                <textarea id="pray" type="text" style="width:95%; height:5rem;"></textarea>
                 <br> 
                 제 <span id="day"> </span> 일차 완료했습니다. <br> 
             </div>

@@ -3,10 +3,7 @@ class Main {
         this.core = new BibleEntity();
         // this.calender = new Calendar(this.core);
 
-        const currentDate = new Date();
-        const month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-        const day = currentDate.getDate();
-        this.core.getTodayData(month, day)
+        window.currentName = localStorage.getItem('name')
         this.name = '';
         this.eventBind()
     }
@@ -15,7 +12,8 @@ class Main {
         document.querySelector('#changeName').addEventListener('click', () => {
             const name = document.querySelector("#nameInput").value;
             document.querySelector("#name").innerHTML = name;
-            window.currentName = name;
+        
+            localStorage.setItem('name', name);
         })
     }
 }

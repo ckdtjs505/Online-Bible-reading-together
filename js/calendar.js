@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("nextNextCalendar").addEventListener("click", function(event) {
         nextCalendar();
     });
+
+    const currentDate = new Date();
+    const $currentDom = document.getElementById(`${currentDate.getMonth() + 1}_${currentDate.getDate()}`);
+    $currentDom?.click()
+
+    document.getElementById("name").innerText = localStorage.getItem("name"); 
 });
 
 var toDay = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 toDay에 Date 객체를 넣어줌
@@ -67,6 +73,7 @@ function buildCalendar() {
         
         column.dataset.day = day;
         column.dataset.month = toDay.getMonth() + 1;
+        column.id = `${toDay.getMonth() + 1}_${day}`;
 
         // @param 평일( 전월일과 익월일의 데이터 제외 )
         if(Math.sign(day) == 1 && lastDate.getDate() >= day) {
