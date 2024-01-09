@@ -64,21 +64,22 @@
 
             // 복사 명령 실행
             document.execCommand('copy');
-            console.log(window.getSelection().toString());
+            
+            // 선택 영역 지우기
+            window.getSelection().removeAllRanges();
+
 
             if( window.currentColumn.dataset.daycnt  ){
                 const queryParams = new URLSearchParams({
-                    "name" : window.currentName,
-                    [window.currentColumn.dataset.daycnt] : window.getSelection().toString(),
+                    "name" : document.querySelector("#name").innerText,
+                    "daycnt" : [window.currentColumn.dataset.daycnt],
+                    [window.currentColumn.dataset.daycnt] : `🌼 이름 : ${document.getElementById('name').innerText} \n📖 오늘 내게 주신 말씀 :\n${document.getElementById('myMessage').innerText}\n제 ${document.getElementById('day').innerText}일차 완료했습니다.`,
                 }).toString();
 
-                fetch(`https://script.google.com/macros/s/AKfycby9z5zWjei-7AMxucZSt0GADI6hLnl4e-Pe8GLwW5Xajt5OF4puqz0jeuBTVns81vyP/exec?${queryParams}`, {
+                fetch(`https://script.google.com/macros/s/AKfycbwEssq7KLYeLWBj42Fm_6N-gNYP5uyAQZmU-YGmwiGYBbbVnkafpQvHVGHW4ZlH-EXD/exec?${queryParams}`, {
                     mode: 'no-cors',
                 })
             }
-
-            // 선택 영역 지우기
-            window.getSelection().removeAllRanges();
 
             window.currentColumn.style.backgroundImage = 'url("../css/check.png")'
             window.currentColumn.style.backgroundRepeat =  'no-repeat';
@@ -91,10 +92,8 @@
                 <div> 🌼 이름 : <span id="name"></span> </div> 
 
                 📖 오늘 내게 주신 말씀 : <br>  
-                <div id="myMessage">
-    
-                </div>
-                🙏 한줄 기도 : <br> 
+                <div id="myMessage"> </div>
+                🙏 한줄 기도 :
                 <textarea id="pray" type="text" style="width:95%; height:5rem;"></textarea>
                 <br> 
                 제 <span id="day"> </span> 일차 완료했습니다. <br> 
