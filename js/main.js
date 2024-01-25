@@ -1,19 +1,17 @@
 class Main {
 	constructor() {
 		this.core = new BibleEntity();
-        this.view = new View(this.core);
+		this.view = new View(this.core);
 		this.view.calender.buildCalendar();
 		this.view.setUser();
 
-        /**
-         * 현재일을 클릭해서 동작하도록.
-         */
-        const currentDate = new Date();
-        const $currentDom = document.getElementById(`${currentDate.getMonth() + 1}_${currentDate.getDate()}`);
-        $currentDom?.click()
+		/**
+		 * 현재일을 클릭해서 동작하도록.
+		 */
+		const currentDate = new Date();
+		const $currentDom = document.getElementById(`${currentDate.getMonth() + 1}_${currentDate.getDate()}`);
+		$currentDom?.click();
 
-        document.getElementById("name").innerText = localStorage.getItem("name"); 
-		this.name = '';
 		this.eventBind();
 	}
 
@@ -28,23 +26,23 @@ class Main {
 }
 
 class View {
-    constructor(core){
-        this.core = core;
-        this.calender = new Calendar(core, {
-			beforeClick : (data) => {
+	constructor(core) {
+		this.core = core;
+		this.calender = new Calendar(core, {
+			beforeClick: (data) => {
 				this.setMessageLoading(data);
 			},
-			afterClick : (data) => {
-				this.setMessage(data)
-			}
+			afterClick: (data) => {
+				this.setMessage(data);
+			},
 		});
-    }
+	}
 
-    setUser(){
-        document.getElementById("name").innerText =  localStorage.getItem("name") || ''; // 접속한 유저 이름 
-    }
+	setUser() {
+		document.getElementById('name').innerText = localStorage.getItem('name') || ''; // 접속한 유저 이름
+	}
 
-	setMessageLoading({ doc, start, end, pos, daycnt }){
+	setMessageLoading({ doc, start, end, pos, daycnt }) {
 		if (doc === '') {
 			document.getElementById('content').innerHTML = '함온성이 없는 날';
 			document.querySelector('#todaymessage').innerHTML = ``;
@@ -97,7 +95,7 @@ class BibleEntity {
 			})
 			.then((data) => {
 				this.info = data;
-				return data
+				return data;
 			});
 	}
 }
