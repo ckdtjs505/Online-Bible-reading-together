@@ -43,6 +43,8 @@ class View {
 	}
 
 	setMessageLoading({ doc, start, end, pos, daycnt }) {
+		document.getElementById('myMessage').innerText = ''; // 기존에 있는 데이터 초기화
+		document.getElementById('pray').value = '';
 		if (doc === '') {
 			document.getElementById('content').innerHTML = '함온성이 없는 날';
 			document.querySelector('#todaymessage').innerHTML = ``;
