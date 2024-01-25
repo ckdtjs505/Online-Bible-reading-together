@@ -39,10 +39,9 @@
 
     <section style="border-top: 1px solid; border-bottom: 1px solid; margin-top: 0.5rem; padding-top: 1rem; padding-bottom: 1rem; ">
 
-        <div>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/qGe76YBrhnw?si=U9rlgy3hRte9E_Ay" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div >
+            <iframe id="messageVideo" style="display: none;" width="100%" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        
         
         <div style="font-size: 1.4rem;"> <span id="todaymessage"> </span></div>
         <br>
@@ -168,7 +167,6 @@
     </div>
   </div>
     <script>
-
         document.addEventListener("DOMContentLoaded", function() {
             let main = new Main();
         });

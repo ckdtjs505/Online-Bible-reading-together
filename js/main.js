@@ -4,7 +4,7 @@ class Main {
 		this.view = new View(this.core);
 		this.view.calender.buildCalendar();
 		this.view.setUser();
-
+		this.getAdminInfo();
 		/**
 		 * 현재일을 클릭해서 동작하도록.
 		 */
@@ -22,6 +22,36 @@ class Main {
 
 			localStorage.setItem('name', name);
 		});
+	}
+
+	getAdminInfo() {
+		const queryParams = new URLSearchParams({
+			type: 'admin',
+		});
+
+		fetch(
+			`https://script.google.com/macros/s/AKfycbzxPVLRpNM26UxOPLVy-_nXKZ5X6ts2yVqUak8x9lWloRGEL7xVIxd7_gixomxxtfPr/exec?${queryParams}`,
+			{
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8',
+				},
+			}
+		)
+			.then((response) => {
+				console.log(response);
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data.row);
+				const { isUrlON, url, isNoticeOn, notice } = data.row;
+
+				if (isUrlON) {
+					const iframe = document.getElementById('messageVideo');
+					iframe.src = url;
+					iframe.style.display = 'block';
+				}
+			});
 	}
 }
 
@@ -82,6 +112,10 @@ class View {
 				}
 			});
 		});
+	}
+
+	setVideo() {
+		iframe.src;
 	}
 }
 
