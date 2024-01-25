@@ -55,10 +55,15 @@
             // 특정 div 영역 선택
             const element = document.getElementById(elementId);
 
-            element.querySelector("#_name").innerText = document.querySelector('#name').innerText;
-            element.querySelector("#_myMessage").innerText = document.querySelector('#myMessage').innerText;
-            element.querySelector("#_day").innerText = document.querySelector('#day').innerText;
-            element.querySelector("#_pray").innerText = document.querySelector('#pray').value;
+            const name = document.querySelector('#name').innerText;
+            const myMessage = document.querySelector('#myMessage').innerText;
+            const day = document.querySelector("#day").innerText;
+            const pray = document.querySelector('#pray').value;
+
+            element.querySelector("#_name").innerText = name;
+            element.querySelector("#_myMessage").innerText = myMessage;
+            element.querySelector("#_day").innerText = day;
+            element.querySelector("#_pray").innerText = pray;
 
             // Range 객체 생성
             const range = document.createRange();
@@ -70,17 +75,24 @@
 
             // 복사 명령 실행
             document.execCommand('copy', element.innerText);
-            
 
-            if( window.currentColumn.dataset.daycnt  ){
+            // 이름이 없는 경우 저장 안함
+            if( !name ) return;
+            if( day  ){
                 const queryParams = new URLSearchParams({
-                    "name" : document.querySelector("#name").innerText,
-                    "daycnt" : [window.currentColumn.dataset.daycnt],
-                    [window.currentColumn.dataset.daycnt] : element.innerText
-                }).toString();
+                    "name" : name,
+                    "daycnt" : day,
+                    "myMessage" : myMessage,
+                    "pray" : pray
+                });
 
-                fetch(`https://script.google.com/macros/s/AKfycbx8puG7ZhF0x7u_TvRAje8KYkvvu3MDWsZYeufvYTzEIWaq16buHxKi-CPFiGCGW8ii/exec?${queryParams}`, {
+                fetch(`https://script.google.com/macros/s/AKfycbzpwJIBpYYOv5dkQR77UrA7CLR1-ijGVmvThTEdAXNM_U2tyqdbnjfTBXsgsdIA58ee/exec?${queryParams}`, {
+                    method: 'POST',
                     mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: queryParams
                 })
             }
 
