@@ -48,7 +48,7 @@ class Main {
 
 				if (isUrlON) {
 					const iframe = document.getElementById('messageVideo');
-					iframe.src = url;
+					iframe.src = `https://www.youtube.com/embed/${url}`;
 					iframe.style.display = 'block';
 				}
 			});
