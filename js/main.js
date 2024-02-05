@@ -94,7 +94,11 @@ class View {
 
 		document.getElementById('content').innerHTML = info
 			.map(({ chapter, message, verse }, key) => {
-				return `<div> <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span> </div>`;
+				if( chapter && message && verse){
+					return `<div> <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span> </div>`;
+				}else {
+					return `<div> <span class='mes' id="mes_${key}"> ${message} </span> </div>`;
+				}
 			})
 			.join(' <br> ');
 

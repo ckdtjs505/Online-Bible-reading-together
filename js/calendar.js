@@ -225,7 +225,29 @@ class Calendar {
 		// 코어로 부터 데이터를 가져와 그려준다
 		const bibleInfo = todayOrder(column.dataset.month, column.dataset.day);
 		this.config?.beforeClick(bibleInfo);
-		const messageInfo = await this.core.getTodayData(bibleInfo);
+
+		let messageInfo = [];
+
+		if( Array.isArray(bibleInfo.doc) ){
+			const promises = bibleInfo.doc.map((val, ind) => {
+				return this.core.getTodayData({
+					lang: 'kor',
+					doc: bibleInfo.doc[ind],
+					pos: bibleInfo.pos[ind],
+					start: '1',
+					end: '1',
+					daycnt: 59,
+				});
+			});
+
+			const results = await Promise.all(promises);
+			results.forEach((data, idx) => {
+				messageInfo = [...messageInfo, { message : bibleInfo.pos[idx] } ,...data];
+			});
+		}else {
+			messageInfo = await this.core.getTodayData(bibleInfo);
+		}
+		
 		this.config?.afterClick(messageInfo);
 	}
 }
