@@ -4,7 +4,6 @@ class Main {
 		this.view = new View(this.core);
 		this.view.calender.buildCalendar();
 		this.view.setUser();
-		this.getAdminInfo();
 		/**
 		 * 현재일을 클릭해서 동작하도록.
 		 */
@@ -23,36 +22,6 @@ class Main {
 			localStorage.setItem('name', name);
 		});
 	}
-
-	getAdminInfo() {
-		const queryParams = new URLSearchParams({
-			type: 'admin',
-		});
-
-		fetch(
-			`https://script.google.com/macros/s/AKfycbzxPVLRpNM26UxOPLVy-_nXKZ5X6ts2yVqUak8x9lWloRGEL7xVIxd7_gixomxxtfPr/exec?${queryParams}`,
-			{
-				redirect: 'follow',
-				headers: {
-					'Content-Type': 'text/plain;charset=utf-8',
-				},
-			}
-		)
-			.then((response) => {
-				console.log(response);
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data.row);
-				const { isUrlON, url, isNoticeOn, notice } = data.row;
-
-				if (isUrlON) {
-					const iframe = document.getElementById('messageVideo');
-					iframe.src = `https://www.youtube.com/embed/${url}`;
-					iframe.style.display = 'block';
-				}
-			});
-	}
 }
 
 class View {
@@ -60,6 +29,8 @@ class View {
 		this.core = core;
 		this.calender = new Calendar(core, {
 			beforeClick: (data) => {
+				const iframe = document.getElementById('messageVideo');
+				iframe.style.display = 'none';
 				this.setMessageLoading(data);
 			},
 			afterClick: (data) => {
@@ -128,7 +99,7 @@ class BibleEntity {
 		this.info = [];
 	}
 
-	getTodayData({ lang, doc, start, end, pos, daycnt }) {
+	getTodayData({ lang, doc, start, end }) {
 		return fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}:1&end=${end}:200`)
 			.then((response) => {
 				return response.json();
@@ -136,6 +107,36 @@ class BibleEntity {
 			.then((data) => {
 				this.info = data;
 				return data;
+			});
+	}
+
+	getAdminInfo(pos) {
+		const queryParams = new URLSearchParams({
+			type: 'admin',
+		});
+
+		fetch(
+			`https://script.google.com/macros/s/AKfycbxjekHGkkVHJrMGLCF8kjgskTG5u9RO_Syupi5NU4xuwFol0F1HtB-wygcAZEWKcGEu/exec?${queryParams}`,
+			{
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8',
+				},
+			}
+		)
+			.then((response) => {
+				console.log(response);
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data.row);
+				const { isUrlOn, videoId, isNoticeOn, notice } = data.row;
+
+				if (data.row.isUrlOn && data.row[pos]) {
+					const iframe = document.getElementById('messageVideo');
+					iframe.src = `https://www.youtube.com/embed/${data.row[pos]}`;
+					iframe.style.display = 'block';
+				}
 			});
 	}
 }

@@ -236,7 +236,6 @@ class Calendar {
 					pos: bibleInfo.pos[ind],
 					start: '1',
 					end: '1',
-					daycnt: 59,
 				});
 			});
 
@@ -245,6 +244,8 @@ class Calendar {
 				messageInfo = [...messageInfo, { message : bibleInfo.pos[idx] } ,...data];
 			});
 		}else {
+			await this.core.getAdminInfo(  bibleInfo.pos )
+
 			messageInfo = await this.core.getTodayData(bibleInfo);
 		}
 		
