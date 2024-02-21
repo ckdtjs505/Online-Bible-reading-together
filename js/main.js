@@ -38,14 +38,36 @@ class View {
 	constructor(core) {
 		this.core = core;
 		this.calender = new Calendar(core, {
-			beforeClick: (data) => {
+			beforeClick: async (bibleInfo) => {
 				this.initialize();
-				this.updateLoadingUI(data);
-			},
-			afterClick: (data) => {
-				console.log(data)
-				this.renderBibleVerse(data.messageInfo);
-				this.renderChapterVideo(data.adminInfo);
+				this.updateLoadingUI(bibleInfo);
+				
+				let messageInfo = [];
+
+				if( Array.isArray(bibleInfo.doc) ){
+					const promises = bibleInfo.doc.map((val, ind) => {
+						return this.core.getTodayData({
+							lang: 'kor',
+							doc: bibleInfo.doc[ind],
+							pos: bibleInfo.pos[ind],
+							start: '1',
+							end: '1',
+						});
+					});
+
+					const results = await Promise.all(promises);
+					results.forEach((data, idx) => {
+						messageInfo = [...messageInfo, { message : bibleInfo.pos[idx] } ,...data];
+					});
+				}else {
+					messageInfo = await this.core.getTodayData(bibleInfo);
+				}
+
+				this.renderBibleVerse(messageInfo);
+
+				let adminInfo = await this.core.getAdminInfo(bibleInfo.pos);
+				this.renderChapterVideo({ ...adminInfo, pos : bibleInfo.pos });
+				
 			},
 		});
 	}
@@ -89,6 +111,7 @@ class View {
 	 * @param {array[number]} data 
 	 */
 	renderChapterVideo(data){
+		console.log(data)
 		if (data.row.isUrlOn && data.row[data.pos]) {
 			const iframe = document.getElementById('messageVideo');
 			iframe.src = `https://www.youtube.com/embed/${data.row[data.pos]}`;
@@ -174,7 +197,6 @@ class BibleEntity {
 		)
 			.then((response) => {
 				const res =  response.json();
-				
 				return res;
 			}).catch( (e) => {
 				console.error(`어드민 정보를 못가지고 옴`)

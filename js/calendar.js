@@ -226,35 +226,8 @@ class Calendar {
 		const bibleInfo = todayOrder(column.dataset.month, column.dataset.day);
 		this.config?.beforeClick(bibleInfo);
 
-		let messageInfo = [];
-		let adminInfo = [];
 
-		if( Array.isArray(bibleInfo.doc) ){
-			const promises = bibleInfo.doc.map((val, ind) => {
-				return this.core.getTodayData({
-					lang: 'kor',
-					doc: bibleInfo.doc[ind],
-					pos: bibleInfo.pos[ind],
-					start: '1',
-					end: '1',
-				});
-			});
 
-			const results = await Promise.all(promises);
-			results.forEach((data, idx) => {
-				messageInfo = [...messageInfo, { message : bibleInfo.pos[idx] } ,...data];
-			});
-		}else {
-			adminInfo = await this.core.getAdminInfo(bibleInfo.pos)
-			messageInfo = await this.core.getTodayData(bibleInfo);
-		}
-		this.config?.afterClick({
-			messageInfo,
-			adminInfo: {
-				...adminInfo,
-				...bibleInfo
-			}
-		});
 	}
 }
 
