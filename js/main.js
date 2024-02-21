@@ -2,23 +2,33 @@ class Main {
 	constructor() {
 		this.core = new BibleEntity();
 		this.view = new View(this.core);
-		this.view.calender.buildCalendar();
+		this.eventBind();
+	}
+
+	static setup(){
+		window.main = new Main();
+		window.main.createApplication();
+		window.main.start();
+	}
+
+	/**
+	 * 캘린더를 생성하고 유저 이름을 설정합니다.
+	 */
+	createApplication(){
+		this.view.createCalender();
 		this.view.setUser();
-		/**
-		 * 현재일을 클릭해서 동작하도록.
-		 */
+	}
+
+	start(){
 		const currentDate = new Date();
 		const $currentDom = document.getElementById(`${currentDate.getMonth() + 1}_${currentDate.getDate()}`);
 		$currentDom?.click();
-
-		this.eventBind();
 	}
 
 	eventBind() {
 		document.querySelector('#changeName').addEventListener('click', () => {
 			const name = document.querySelector('#nameInput').value;
 			document.querySelector('#name').innerHTML = name;
-
 			localStorage.setItem('name', name);
 		});
 	}
@@ -29,23 +39,26 @@ class View {
 		this.core = core;
 		this.calender = new Calendar(core, {
 			beforeClick: (data) => {
-				const iframe = document.getElementById('messageVideo');
-				iframe.style.display = 'none';
-				this.setMessageLoading(data);
+				this.initialize();
+				this.updateLoadingUI(data);
 			},
 			afterClick: (data) => {
-				this.setMessage(data);
+				console.log(data)
+				this.renderBibleVerse(data.messageInfo);
+				this.renderChapterVideo(data.adminInfo);
 			},
 		});
+	}
+
+	createCalender(){
+		this.calender.buildCalendar();
 	}
 
 	setUser() {
 		document.getElementById('name').innerText = localStorage.getItem('name') || ''; // 접속한 유저 이름
 	}
 
-	setMessageLoading({ doc, start, end, pos, daycnt }) {
-		document.getElementById('myMessage').innerText = ''; // 기존에 있는 데이터 초기화
-		document.getElementById('pray').value = '';
+	updateLoadingUI({ doc, start, end, pos, daycnt }) {
 		if (doc === '') {
 			document.getElementById('content').innerHTML = '함온성이 없는 날';
 			document.querySelector('#todaymessage').innerHTML = ``;
@@ -57,40 +70,73 @@ class View {
 		document.getElementById('content').innerHTML = '데이터를 가져오고 있습니다.';
 	}
 
-	setMessage(info) {
+	initialize(){
+		// 오늘 내게 주신 말씀 초기화
+		const myMessageElement = document.getElementById('myMessage');
+		if( myMessageElement ) myMessageElement.innerHTML = '';
+
+		// 한줄 기도 초기화
+		const payInputElement = document.getElementById('pray');
+		if(payInputElement) payInputElement.value = '';
+
+		// 성경 개관 미노출
+		const iframe = document.getElementById('messageVideo');
+		if( iframe )iframe.style.display = 'none';
+	}
+
+	/**
+	 * 성경개관 영상
+	 * @param {array[number]} data 
+	 */
+	renderChapterVideo(data){
+		if (data.row.isUrlOn && data.pos) {
+			const iframe = document.getElementById('messageVideo');
+			iframe.src = `https://www.youtube.com/embed/${data.row[data.pos]}`;
+			iframe.style.display = 'block';
+		}
+	}
+
+	/**
+	 * 성경 말씀 그려주고, 클릭시 하이라이트 기능 제공
+	 * @param {array<number>} info 
+	 * @returns void
+	 */
+	renderBibleVerse(info){
 		if (info == undefined || info.length === 0) {
 			console.log('데이터가 없습니다');
 			return;
 		}
 
-		document.getElementById('content').innerHTML = info
-			.map(({ chapter, message, verse }, key) => {
-				if( chapter && message && verse){
-					return `<div> <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span> </div>`;
-				}else {
-					return `<div> <span class='mes' id="mes_${key}"> ${message} </span> </div>`;
-				}
-			})
-			.join(' <br> ');
-
-		document.querySelectorAll('.mes').forEach((ele) => {
-			const div = document.createElement('div');
-			div.id = `select_${ele.id}`;
-			div.innerHTML = ele.innerHTML;
-			ele.addEventListener('click', () => {
-				if (ele.classList.contains('highlight')) {
-					ele.classList.remove('highlight');
-					document.getElementById('myMessage')?.removeChild(div);
-				} else {
-					ele.classList.add('highlight');
-					document.getElementById('myMessage')?.appendChild(div);
-				}
+		const contentElement = document.getElementById('content')
+		if( contentElement ){
+			// 말씀 생성
+			contentElement.innerHTML = info
+				.map(({ chapter, message, verse }, key) => {
+					if( chapter && message && verse){
+						return `<div> <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span> </div>`;
+					}else {
+						return `<div> <span class='mes' id="mes_${key}"> ${message} </span> </div>`;
+					}
+				})
+				.join(' <br> ');
+			
+			contentElement.querySelectorAll('.mes').forEach((ele) => {
+				const div = document.createElement('div');
+				div.id = `select_${ele.id}`;
+				div.innerHTML = ele.innerHTML;
+				// 말씀 클릭시 하이라이트 기능, 클릭한 말씀 하단에 복사
+				ele.addEventListener('click', () => {
+					if (ele.classList.contains('highlight')) {
+						ele.classList.remove('highlight');
+						document.getElementById('myMessage')?.removeChild(div);
+					} else {
+						ele.classList.add('highlight');
+						document.getElementById('myMessage')?.appendChild(div);
+					}
+				});
 			});
-		});
-	}
-
-	setVideo() {
-		iframe.src;
+			
+		}
 	}
 }
 
@@ -107,15 +153,17 @@ class BibleEntity {
 			.then((data) => {
 				this.info = data;
 				return data;
+			}).catch( (e) => {
+				console.error(`getTodayDat를 못가지고 옴`)
 			});
 	}
 
-	getAdminInfo(pos) {
+	getAdminInfo() {
 		const queryParams = new URLSearchParams({
 			type: 'admin',
 		});
 
-		fetch(
+		return fetch(
 			`https://script.google.com/macros/s/AKfycbxjekHGkkVHJrMGLCF8kjgskTG5u9RO_Syupi5NU4xuwFol0F1HtB-wygcAZEWKcGEu/exec?${queryParams}`,
 			{
 				redirect: 'follow',
@@ -125,18 +173,12 @@ class BibleEntity {
 			}
 		)
 			.then((response) => {
-				console.log(response);
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data.row);
-				const { isUrlOn, videoId, isNoticeOn, notice } = data.row;
-
-				if (data.row.isUrlOn && data.row[pos]) {
-					const iframe = document.getElementById('messageVideo');
-					iframe.src = `https://www.youtube.com/embed/${data.row[pos]}`;
-					iframe.style.display = 'block';
-				}
+				const res =  response.json();
+				
+				return res;
+			}).catch( (e) => {
+				console.error(`어드민 정보를 못가지고 옴`)
 			});
 	}
+	
 }

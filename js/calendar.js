@@ -227,6 +227,7 @@ class Calendar {
 		this.config?.beforeClick(bibleInfo);
 
 		let messageInfo = [];
+		let adminInfo = [];
 
 		if( Array.isArray(bibleInfo.doc) ){
 			const promises = bibleInfo.doc.map((val, ind) => {
@@ -244,12 +245,16 @@ class Calendar {
 				messageInfo = [...messageInfo, { message : bibleInfo.pos[idx] } ,...data];
 			});
 		}else {
-			await this.core.getAdminInfo(  bibleInfo.pos )
-
+			adminInfo = await this.core.getAdminInfo(bibleInfo.pos)
 			messageInfo = await this.core.getTodayData(bibleInfo);
 		}
-		
-		this.config?.afterClick(messageInfo);
+		this.config?.afterClick({
+			messageInfo,
+			adminInfo: {
+				...adminInfo,
+				...bibleInfo
+			}
+		});
 	}
 }
 
