@@ -89,7 +89,7 @@ class View {
 	 * @param {array[number]} data 
 	 */
 	renderChapterVideo(data){
-		if (data.row.isUrlOn && data.pos) {
+		if (data.row.isUrlOn && data.row[data.pos]) {
 			const iframe = document.getElementById('messageVideo');
 			iframe.src = `https://www.youtube.com/embed/${data.row[data.pos]}`;
 			iframe.style.display = 'block';
