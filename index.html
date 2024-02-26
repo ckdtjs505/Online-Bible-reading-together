@@ -65,9 +65,9 @@
             const pray = document.querySelector('#pray').value;
 
             let copyData = (prayForUserCheckBox.checked ? `💝앞사람을  위한 기도 \n${prayForUser}\n` : '')
-                +`🌸 이름 : ${name} \n`
-                + `📖 오늘 내게 주신 말씀 \n${myMessage}\n`
-                +  (prayCheckBox.checked ? `🙏 한줄기도 \n${pray} \n` : '')
+                +`🌸 이름 : ${name} \n\n`
+                + `📖 오늘 내게 주신 말씀 \n${myMessage}\n\n`
+                +  (prayCheckBox.checked ? `🙏 한줄기도 \n${pray} \n\n` : '')
                 + `제 ${day}일차 완료했습니다.`;
 
             navigator.clipboard.writeText(copyData).then(() => {
