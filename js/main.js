@@ -31,6 +31,18 @@ class Main {
 			document.querySelector('#name').innerHTML = name;
 			localStorage.setItem('name', name);
 		});
+
+		document.getElementById('prayForUserCheckBox').addEventListener('click', () => {
+			const prayForUser = document.getElementById('prayForUser');
+			prayForUser.style.display = prayForUser.style.display === 'none' ? 'block' : 'none';
+			localStorage.setItem('isPrayForUserVisible', prayForUser.style.display !== 'none');
+		});
+
+		document.getElementById('prayCheckBox').addEventListener('click', () => {
+			const prayBox = document.getElementById('prayBox');
+			prayBox.style.display = prayBox.style.display === 'none' ? 'block' : 'none';
+			localStorage.setItem('isPrayVisible', prayBox.style.display !== 'none');
+		});
 	}
 }
 
@@ -38,7 +50,7 @@ class View {
 	constructor(core) {
 		this.core = core;
 		this.calender = new Calendar(core, {
-			beforeClick: async (bibleInfo) => {
+			DayClick: async (bibleInfo) => {
 				this.initialize();
 				this.updateLoadingUI(bibleInfo);
 				
@@ -104,6 +116,29 @@ class View {
 		// 성경 개관 미노출
 		const iframe = document.getElementById('messageVideo');
 		if( iframe )iframe.style.display = 'none';
+
+
+		const prayForUser = document.getElementById('prayForUser');
+
+		// 로컬 스토리지에서 저장된  상태를 불러와 설정
+		const isPrayForUserVisible = localStorage.getItem('isPrayForUserVisible');
+		if (isPrayForUserVisible === 'true') {
+			prayForUser.style.display = 'block';
+			prayForUserCheckBox.checked = true; // prayForUserCheckBox의 체크  상태를 설정
+		} else {
+			prayForUser.style.display = 'none';
+			prayForUserCheckBox.checked = false; // prayForUserCheckBox의 체크  상태를 설정
+		}
+
+		const prayBox = document.getElementById('prayBox');
+		const isPrayVisible = localStorage.getItem('isPrayVisible');
+		if (isPrayVisible === 'true') {
+			prayBox.style.display = 'block';
+			prayCheckBox.checked = true; //  체크  상태를 설정
+		} else {
+			prayBox.style.display = 'none';
+			prayCheckBox.checked = false; //  체크  상태를 설정
+		}
 	}
 
 	/**

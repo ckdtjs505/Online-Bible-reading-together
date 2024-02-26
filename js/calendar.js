@@ -224,7 +224,7 @@ class Calendar {
 
 		// 코어로 부터 데이터를 가져와 그려준다
 		const bibleInfo = todayOrder(column.dataset.month, column.dataset.day);
-		this.config?.beforeClick(bibleInfo);
+		this.config?.DayClick(bibleInfo);
 
 
 
