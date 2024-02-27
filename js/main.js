@@ -43,12 +43,25 @@ class Main {
 			prayBox.style.display = prayBox.style.display === 'none' ? 'block' : 'none';
 			localStorage.setItem('isPrayVisible', prayBox.style.display !== 'none');
 		});
+
+		document.getElementById('larger').addEventListener('click', () => {
+			this.view.fontSize = this.view.fontSize + 0.1;
+			this.view.setFontSize(this.view.fontSize);
+			localStorage.setItem("fontSize", this.view.fontSize);
+		})
+
+		document.getElementById('smaller').addEventListener('click', () => {
+			this.view.fontSize  = this.view.fontSize - 0.1;
+			this.view.setFontSize(this.view.fontSize );
+			localStorage.setItem("fontSize", this.view.fontSize);
+		})
 	}
 }
 
 class View {
 	constructor(core) {
 		this.core = core;
+		this.fontSize = parseFloat(localStorage.getItem("fontSize")) || 1.2;
 		this.calender = new Calendar(core, {
 			DayClick: async (bibleInfo) => {
 				this.initialize();
@@ -104,6 +117,10 @@ class View {
 		document.getElementById('content').innerHTML = '데이터를 가져오고 있습니다.';
 	}
 
+	setFontSize(fontSize){
+		document.getElementById('content').style.fontSize = `${fontSize}rem`;
+	}
+
 	initialize(){
 		// 오늘 내게 주신 말씀 초기화
 		const myMessageElement = document.getElementById('myMessage');
@@ -139,6 +156,8 @@ class View {
 			prayBox.style.display = 'none';
 			prayCheckBox.checked = false; //  체크  상태를 설정
 		}
+
+		this.setFontSize(this.fontSize)
 	}
 
 	/**
