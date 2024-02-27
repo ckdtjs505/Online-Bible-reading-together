@@ -119,6 +119,7 @@ class View {
 
 	setFontSize(fontSize){
 		document.getElementById('content').style.fontSize = `${fontSize}rem`;
+		document.getElementById('todaymessage').style.fontSize =  `${fontSize + 0.2}rem`;
 	}
 
 	initialize(){
