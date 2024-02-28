@@ -223,7 +223,7 @@ class Calendar {
 		}
 
 		// @param 선택일 체크 표시
-		column.style.backgroundColor = '#FF9999';
+		// column.style.backgroundColor = '#FF9999';
 
 		// @param 선택일 클래스명 변경
 		column.classList.add('choiceDay');
