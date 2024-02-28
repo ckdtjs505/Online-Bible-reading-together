@@ -133,7 +133,7 @@ class Calendar {
 
 					// @details 현재일인 경우
 					else if (this.nowDate.getDate() == day) {
-						column.style.backgroundColor = '#FFFFE6';
+						column.style.backgroundColor = '#fff26f';
 						column.style.cursor = 'pointer';
 						column.onclick = () => {
 							this.calendarChoiceDay(column);
@@ -180,7 +180,7 @@ class Calendar {
 			const { pos, start, end, daycnt } = todayOrder(toDay.getMonth() + 1, day);
 
 			if( window.getUserProgressInfo.includes( daycnt ) ){
-				column.style.backgroundColor = '#fff26f';
+				column.style.backgroundColor = '#FFFFE6';
 			}
 
 			dom++;
@@ -231,7 +231,6 @@ class Calendar {
 		// 코어로 부터 데이터를 가져와 그려준다
 		const bibleInfo = todayOrder(column.dataset.month, column.dataset.day);
 		this.config?.DayClick(bibleInfo);
-
 
 
 	}
