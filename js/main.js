@@ -8,15 +8,17 @@ class Main {
 	static setup(){
 		window.main = new Main();
 		window.main.createApplication();
-		window.main.start();
 	}
 
 	/**
 	 * 캘린더를 생성하고 유저 이름을 설정합니다.
 	 */
-	createApplication(){
-		this.view.createCalender();
+	async createApplication(){
 		this.view.setUser();
+		const getUserProgressInfo = await this.core.getUserProgressInfo(this.view.userName);
+		window.getUserProgressInfo = getUserProgressInfo.row 
+		this.view.createCalender();
+		this.start();
 	}
 
 	start(){
@@ -91,8 +93,7 @@ class View {
 				this.renderBibleVerse(messageInfo);
 
 				let adminInfo = await this.core.getAdminInfo(bibleInfo.pos);
-				this.renderChapterVideo({ ...adminInfo, pos : bibleInfo.pos });
-				
+				this.renderChapterVideo({ ...adminInfo, pos : bibleInfo.pos });				
 			},
 		});
 	}
@@ -102,7 +103,9 @@ class View {
 	}
 
 	setUser() {
-		document.getElementById('name').innerText = localStorage.getItem('name') || ''; // 접속한 유저 이름
+		this.userName = localStorage.getItem('name') || ''
+		document.getElementById('name').innerText = this.userName; // 접속한 유저 이름
+		
 	}
 
 	updateLoadingUI({ doc, start, end, pos, daycnt }) {
@@ -121,8 +124,8 @@ class View {
 		document.getElementById('content').style.fontSize = `${fontSize}rem`;
 		document.getElementById('todaymessage').style.fontSize =  `${fontSize + 0.2}rem`;
 	}
-
 	initialize(){
+
 		// 오늘 내게 주신 말씀 초기화
 		const myMessageElement = document.getElementById('myMessage');
 		if( myMessageElement ) myMessageElement.innerHTML = '';
@@ -257,5 +260,28 @@ class BibleEntity {
 				console.error(`어드민 정보를 못가지고 옴`)
 			});
 	}
-	
+
+
+	getUserProgressInfo(userName) {
+		const queryParams = new URLSearchParams({
+			type: 'userProgress',
+			userName
+		});
+
+		return fetch(
+			`https://script.google.com/macros/s/AKfycbwHiTDeqtNUONNMdS5nekjTPponxGXkXMAM56So9S9LddNrGEk9kJY1QqlZelZefmUD/exec?${queryParams}`,
+			{
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8',
+				},
+			}
+		)
+			.then((response) => {
+				const res =  response.json();
+				return res;
+			}).catch( (e) => {
+				console.error(`어드민 정보를 못가지고 옴`)
+			});
+	}
 }
