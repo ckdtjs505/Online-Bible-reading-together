@@ -79,11 +79,7 @@ class Calendar {
 				// @param 평일 날짜 데이터 삽입
 				column.innerText = autoLeftPad(day, 2);
 				const { pos, start, end, daycnt } = todayOrder(toDay.getMonth() + 1, day);
-				if( window.getUserProgressInfo.includes( daycnt ) ){
-					column.style.backgroundImage = 'url("./css/check.png")';
-					column.style.backgroundRepeat =  'no-repeat';
-					column.style.backgroundPosition =  'center';
-				}
+
 				if (pos) {
 					column.innerHTML = `
                         ${autoLeftPad(day, 2)}<br>
@@ -119,7 +115,7 @@ class Calendar {
 				if (toDay.getMonth() == this.nowDate.getMonth()) {
 					// @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
 					if (this.nowDate.getDate() > day && Math.sign(day) == 1) {
-						column.style.backgroundColor = '#FFFFFF';
+						// column.style.backgroundColor = '#FFFFFF';
 						column.style.cursor = 'pointer';
 						column.onclick = () => {
 							this.calendarChoiceDay(column);
@@ -128,7 +124,7 @@ class Calendar {
 
 					// @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
 					else if (this.nowDate.getDate() < day && lastDate.getDate() >= day) {
-						column.style.backgroundColor = '#FFFFFF';
+						// column.style.backgroundColor = '#FFFFFF';
 						column.style.cursor = 'pointer';
 						column.onclick = () => {
 							this.calendarChoiceDay(column);
@@ -147,7 +143,7 @@ class Calendar {
 					// @details 현재월보다 이전인경우
 				} else if (toDay.getMonth() < this.nowDate.getMonth()) {
 					if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
-						column.style.backgroundColor = '#E5E5E5';
+						// column.style.backgroundColor = '#E5E5E5';
 					}
 				}
 
@@ -179,6 +175,12 @@ class Calendar {
 						this.calendarChoiceDay(column);
 					};
 				}
+			}
+
+			const { pos, start, end, daycnt } = todayOrder(toDay.getMonth() + 1, day);
+
+			if( window.getUserProgressInfo.includes( daycnt ) ){
+				column.style.backgroundColor = '#fff26f';
 			}
 
 			dom++;
