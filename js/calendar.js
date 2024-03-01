@@ -144,6 +144,9 @@ class Calendar {
 				} else if (toDay.getMonth() < this.nowDate.getMonth()) {
 					if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
 						// column.style.backgroundColor = '#E5E5E5';
+						column.onclick = () => {
+							this.calendarChoiceDay(column);
+						};
 					}
 				}
 
@@ -217,7 +220,14 @@ class Calendar {
 
 			// @see 금일이 아닌 경우
 			else {
-				document.getElementsByClassName('choiceDay')[0].style.backgroundColor = '#FFFFFF';
+				// document.getElementsByClassName('choiceDay')[0].style.backgroundColor = '#FFFFFF';
+
+				const { pos, start, end, daycnt } = todayOrder(this.toDay.getMonth() + 1, day);
+
+				if( window.getUserProgressInfo.includes( daycnt ) ){
+					column.style.backgroundColor = '#FFFFE6';
+				}
+	
 			}
 			document.getElementsByClassName('choiceDay')[0].classList.remove('choiceDay');
 		}
