@@ -15,8 +15,6 @@ class Main {
 	 */
 	async createApplication(){
 		this.view.setUser();
-		const getUserProgressInfo = await this.core.getUserProgressInfo(this.view.userName);
-		window.getUserProgressInfo = getUserProgressInfo.row 
 		this.view.createCalender();
 		this.start();
 	}
@@ -100,6 +98,11 @@ class View {
 
 	createCalender(){
 		this.calender.buildCalendar();
+
+		this.core.getUserProgressInfo(this.userName).then( (data) => {
+			window.progressData = data.row;
+			this.calender.setProgressInfo(data.row);
+		});
 	}
 
 	setUser() {

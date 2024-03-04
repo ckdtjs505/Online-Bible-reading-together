@@ -180,14 +180,29 @@ class Calendar {
 				}
 			}
 
-			const { pos, start, end, daycnt } = todayOrder(toDay.getMonth() + 1, day);
-
-			if( window.getUserProgressInfo.includes( daycnt ) ){
-				column.style.backgroundColor = '#FFFFE6';
-			}
-
 			dom++;
 		}
+	
+		this.setProgressInfo(window.progressData);
+	}
+
+	setProgressInfo(completedDates){
+		
+		var table = this.tbCalendar;
+
+		console.log(completedDates)
+		// 테이블의 모든 행을 순회
+		for (var i = 0, row; row = table.rows[i]; i++) {
+			// 각 행의 모든 셀을 순회
+			for (var j = 0, col; col = row.cells[j]; j++) {
+				// 여기서 col은 각 셀(열)을 나타냄, 필요한 작업 수행
+
+				if( completedDates?.includes(parseInt(col.dataset.daycnt)) ){
+					col.style.backgroundColor = '#FFFFE6';
+				}
+			}
+		}
+
 	}
 
 	/**
@@ -206,7 +221,7 @@ class Calendar {
 	 * @brief   날짜 선택
 	 * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
 	 */
-	async calendarChoiceDay(column) {
+	calendarChoiceDay(column) {
 		window.currentColumn = column;
 		// @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
 		if (document.getElementsByClassName('choiceDay')[0]) {
@@ -222,11 +237,6 @@ class Calendar {
 			else {
 				// document.getElementsByClassName('choiceDay')[0].style.backgroundColor = '#FFFFFF';
 
-				const { pos, start, end, daycnt } = todayOrder(this.toDay.getMonth() + 1, day);
-
-				if( window.getUserProgressInfo.includes( daycnt ) ){
-					column.style.backgroundColor = '#FFFFE6';
-				}
 	
 			}
 			document.getElementsByClassName('choiceDay')[0].classList.remove('choiceDay');
