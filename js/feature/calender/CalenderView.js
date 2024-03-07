@@ -1,3 +1,4 @@
+import Utils from "../../shared/utils.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
 import DailyVerse from "../dailyVerse/index.js";
 
@@ -23,7 +24,7 @@ export default class CalendarView {
         this.$calendarTable.querySelector('thead > tr').innerHTML = `<td class="calendarBtn" id="btnPrevCalendar">&#60;</td>
             <td colspan="5">
                 <span id="calYear">${this.currentYear}</span>년
-                <span id="calMonth">${autoLeftPad(this.currentMonth, 2)}</span>월
+                <span id="calMonth">${Utils.autoLeftPad(this.currentMonth, 2)}</span>월
             </td>
             <td class="calendarBtn" id="nextNextCalendar">&#62;</td>`
         
@@ -46,7 +47,7 @@ export default class CalendarView {
             const lastMonth = new Date(this.currentYear, this.currentMonth-1, 0); // 지난 달의 마지막 날
             const lastDateOfLastMonth = lastMonth.getDate(); // 지난 달의 마지막 날짜
             const dayToDisplay = lastDateOfLastMonth - firstDayOfMonth + i + 1; // 표시해야 할 지난 달의 날짜
-            cell.innerHTML = `${autoLeftPad(dayToDisplay, 2)}`
+            cell.innerHTML = `${Utils.autoLeftPad(dayToDisplay, 2)}`
             cell.className = 'calendar-day last-month'; 
         }
 
@@ -70,7 +71,7 @@ export default class CalendarView {
             }else if( dayOfWeek === 6) {
                 cell.classList.add('saturday');
             }
-            cell.innerHTML = `${autoLeftPad(day, 2)}<br>${readingPlanDetail}`
+            cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br>${readingPlanDetail}`
             cell.onclick  = () => {
                 DailyVerse.setVerse(readingPlan)
                 cell.classList.add('choiceDay');
@@ -84,7 +85,7 @@ export default class CalendarView {
 
         for (let nextDay = 1; nextDay <= daysToAddForNextMonth; nextDay++) {
             const cell = row.insertCell();
-            cell.textContent = `${autoLeftPad(nextDay, 2)}`;
+            cell.textContent = `${Utils.autoLeftPad(nextDay, 2)}`;
             cell.className = 'calendar-day next-month'
         }
 
@@ -134,17 +135,4 @@ export default class CalendarView {
 			}
 		}
 	}
-}
-
-/**
- * @brief   숫자 두자릿수( 00 ) 변경
- * @details 자릿수가 한자리인 ( 1, 2, 3등 )의 값을 10, 11, 12등과 같은 두자리수 형식으로 맞추기위해 0을 붙인다.
- * @param   num     앞에 0을 붙일 숫자 값
- * @param   digit   글자의 자릿수를 지정 ( 2자릿수인 경우 00, 3자릿수인 경우 000 … )
- */
-function autoLeftPad(num, digit) {
-	if (String(num).length < digit) {
-		num = new Array(digit - String(num).length + 1).join('0') + num;
-	}
-	return num;
 }
