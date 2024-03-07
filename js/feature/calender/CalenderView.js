@@ -72,7 +72,7 @@ export default class CalendarView {
             }
             cell.innerHTML = `${autoLeftPad(day, 2)}<br>${readingPlanDetail}`
             cell.onclick  = () => {
-                this.calendarChoiceDay(readingPlan);
+                DailyVerse.setVerse(readingPlan)
                 cell.classList.add('choiceDay');
             } 
         }
@@ -110,6 +110,15 @@ export default class CalendarView {
         this.render();
     }
 
+    selectToday(){
+        this.currentDay = new Date().getDate();
+        this.currentYear = new Date().getFullYear(); 
+        this.currentMonth = new Date().getMonth() + 1; 
+
+        const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${ this.currentDay }`)
+        DailyVerse.setVerse(readingPlan)
+    }
+
 	setProgressInfo(completedDates){
 		var table = this.tbCalendar;
 		console.log(completedDates)
@@ -124,20 +133,6 @@ export default class CalendarView {
 				}
 			}
 		}
-	}
-
-	/**
-	 * @brief   날짜 선택
-	 * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
-	 */
-	async calendarChoiceDay(readingPlan) {
-        DailyVerse.setVerse(readingPlan)
-
-		// // @param 선택일 클래스명 변경
-		// column.classList.add('choiceDay');
-
-		// 코어로 부터 데이터를 가져와 그려준다
-
 	}
 }
 

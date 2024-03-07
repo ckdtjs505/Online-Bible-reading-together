@@ -14,7 +14,6 @@ export default class DailyVerseDisplay {
             }).join(' <br> ')}`
         }).join('');
 
-
         this.container.querySelectorAll('.mes').forEach((ele) => {
             const div = document.createElement('div');
             div.id = `select_${ele.id}`;
