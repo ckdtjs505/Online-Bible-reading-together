@@ -90,17 +90,6 @@ export default class CalendarView {
 
     }
 
-    bindEvents(){
-        document.getElementById('btnPrevCalendar').addEventListener('click', (event) => {
-            console.log('t');
-            this.prevCalendar();
-		});
-
-		document.getElementById('nextNextCalendar').addEventListener('click', (event) => {
-			this.nextCalendar();
-		});
-    }
-
 	/**
 	 * @brief   이전달 버튼 클릭시
 	 */
@@ -135,7 +124,6 @@ export default class CalendarView {
 				}
 			}
 		}
-
 	}
 
 	/**
