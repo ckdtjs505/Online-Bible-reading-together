@@ -1,4 +1,5 @@
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
+import DailyVerse from "../dailyVerse/index.js";
 
 export default class CalendarView {
 	constructor(config) {
@@ -70,6 +71,10 @@ export default class CalendarView {
                 cell.classList.add('saturday');
             }
             cell.innerHTML = `${autoLeftPad(day, 2)}<br>${readingPlanDetail}`
+            cell.onclick  = () => {
+                this.calendarChoiceDay(readingPlan);
+                cell.classList.add('choiceDay');
+            } 
         }
 
         // 달력의 마지막 날 이후로 남은 칸에 다음 달의 초반 일자를 추가
@@ -137,35 +142,13 @@ export default class CalendarView {
 	 * @brief   날짜 선택
 	 * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
 	 */
-	calendarChoiceDay(column) {
-		window.currentColumn = column;
-		// @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
-		if (document.getElementsByClassName('choiceDay')[0]) {
-			// @see 금일인 경우
-			if (
-				document.getElementById('calMonth').innerText == autoLeftPad(this.nowDate.getMonth() + 1, 2) &&
-				document.getElementsByClassName('choiceDay')[0].innerText == autoLeftPad(this.toDay.getDate(), 2)
-			) {
-				document.getElementsByClassName('choiceDay')[0].style.backgroundColor = '#FFFFE6';
-			}
+	async calendarChoiceDay(readingPlan) {
+        DailyVerse.setVerse(readingPlan)
 
-			// @see 금일이 아닌 경우
-			else {
-				// document.getElementsByClassName('choiceDay')[0].style.backgroundColor = '#FFFFFF';
-
-	
-			}
-			document.getElementsByClassName('choiceDay')[0].classList.remove('choiceDay');
-		}
-
-
-		// @param 선택일 클래스명 변경
-		column.classList.add('choiceDay');
+		// // @param 선택일 클래스명 변경
+		// column.classList.add('choiceDay');
 
 		// 코어로 부터 데이터를 가져와 그려준다
-		const bibleInfo = todayOrder(column.dataset.month, column.dataset.day);
-		this.config?.DayClick(bibleInfo);
-
 
 	}
 }

@@ -1,8 +1,9 @@
+import { chapter } from "../bibleReading/BibleReadingData.js";
 import DailyVerseModel from "./DailyVerseModel.js";
 
 export default class DailyVerseService {
-    static getDailyVerse({ lang, doc, start, end }) {
-		return fetch(`${API_URL}?lang=${lang}&doc=${doc}&start=${start}:1&end=${end}:200`)
+    static getDailyVerse({ lang, book, start, end }) {
+		return fetch(`${API_URL}?lang=${lang}&doc=${chapter[book]}&start=${start}:1&end=${end}:200`)
 			.then((response) => {
 				return response.json();
 			})

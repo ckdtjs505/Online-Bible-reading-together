@@ -1,15 +1,18 @@
 import DailyVerseDisplay from "./DailyVerseDisplay.js";
 import DailyVerseService from "./DailyVerseServices.js";
 
-document.addEventListener('click', async () => {
-    const versesModels = await DailyVerseService.getDailyVerse({
-        "lang": "kor",
-        "doc": "1jn",
-        "pos": "요한1서",
-        "start": "1",
-        "end": "5",
-        "daycnt": 58
-    })
-    const verseDisplay = new DailyVerseDisplay('content', versesModels);
-    verseDisplay.render();
-});
+export default class DailyVerse {
+
+    static async setVerse(readingPlan){
+        console.log(readingPlan)
+        const promises = readingPlan.map( async ({start, end, lang, book})  =>  {
+            const result = await DailyVerseService.getDailyVerse({ start, end, lang, book});
+            // 비동기 작업의 결과와 해당 결과의 'book' 키를 객체로 반환
+            return { book, result };
+        })
+        
+        const versesModels = await Promise.all(promises);
+        const verseDisplay = new DailyVerseDisplay('content', versesModels);
+        verseDisplay.render();
+    }
+}

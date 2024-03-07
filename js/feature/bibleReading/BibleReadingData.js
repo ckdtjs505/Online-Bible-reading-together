@@ -104,7 +104,7 @@ const BibleReadingsData = [
 
 ];
 
-const doc = {
+export const chapter = {
 	창세기: 'ge',
 	출애굽기: 'exo',
 	레위기: 'lev',
