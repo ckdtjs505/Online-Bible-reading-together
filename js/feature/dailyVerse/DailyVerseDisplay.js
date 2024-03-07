@@ -13,5 +13,22 @@ export default class DailyVerseDisplay {
                 </div>`
             }).join(' <br> ')}`
         }).join('');
+
+
+        this.container.querySelectorAll('.mes').forEach((ele) => {
+            const div = document.createElement('div');
+            div.id = `select_${ele.id}`;
+            div.innerHTML = ele.innerHTML;
+            // 말씀 클릭시 하이라이트 기능, 클릭한 말씀 하단에 복사
+            ele.addEventListener('click', () => {
+                if (ele.classList.contains('highlight')) {
+                    ele.classList.remove('highlight');
+                    document.getElementById('myMessage')?.removeChild(div);
+                } else {
+                    ele.classList.add('highlight');
+                    document.getElementById('myMessage')?.appendChild(div);
+                }
+            });
+        });
     }
 }

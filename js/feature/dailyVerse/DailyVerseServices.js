@@ -1,6 +1,6 @@
 import { chapter } from "../bibleReading/BibleReadingData.js";
 import DailyVerseModel from "./DailyVerseModel.js";
-
+const API_URL = 'https://yesu.io/bible';
 export default class DailyVerseService {
     static getDailyVerse({ lang, book, start, end }) {
 		return fetch(`${API_URL}?lang=${lang}&doc=${chapter[book]}&start=${start}:1&end=${end}:200`)
