@@ -1,5 +1,9 @@
 import CalenderView from "./CalenderView.js";
 
-const calenderView = new CalenderView();
-calenderView.render();
-calenderView.selectToday();
+const calenderInit = () => {
+    const calenderView = new CalenderView();
+    calenderView.render();
+    calenderView.selectToday();
+}
+
+export { calenderInit  }
