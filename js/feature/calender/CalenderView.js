@@ -3,17 +3,31 @@ import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
 import DailyVerse from "../dailyVerse/index.js";
 
 export default class CalendarView {
-	constructor(config) {
+	constructor() {
         this.$calendarTable = document.querySelector("#calender")
 		this.tbCalendar = document.querySelector('.scriptCalendar > tbody');
 		this.toDay = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 toDay에 Date 객체를 넣어줌
 		this.nowDate = new Date(); // @param 전역 변수, 실제 오늘날짜 고정값
-		this.config = config;
 
         this.currentDay = new Date().getDate();
         this.currentYear = new Date().getFullYear(); 
         this.currentMonth = new Date().getMonth() + 1; 
+        
 	}
+
+    renderSkeleton() {
+        this.$calendarTable.querySelector('thead > tr').innerHTML = `
+            <td colspan="7" class="skeleton skeleton-text"></td>
+        `;
+
+        this.tbCalendar.innerHTML = `
+            <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
+            <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
+            <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
+            <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
+            <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
+        `;
+    }
 
     render(){
         // 초기화 로직

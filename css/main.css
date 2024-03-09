@@ -48,3 +48,31 @@
     color: #A9A9A9; /* 이전달 셀에 대한 스타일 */
     cursor: default;
 }
+
+.skeleton {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+.skeleton-text {
+    height: 20px;
+    width: 80%;
+    margin: 10px auto;
+}
+
+@keyframes loading {
+    0% {
+        background-color: #e0e0e0;
+    }
+    50% {
+        background-color: #c0c0c0;
+    }
+    100% {
+        background-color: #e0e0e0;
+    }
+}
+
+.skeleton {
+    animation: loading 1.5s infinite;
+}
