@@ -1,7 +1,14 @@
 export default class DailyVerseDisplay {
-    constructor(containerId, verseInfo) {
+    constructor(containerId) {
         this.container = document.getElementById(containerId);
-        this.verse = verseInfo;
+    }
+
+    setVerse(verseInfo){
+        this.verse = verseInfo
+    }
+
+    renderLoading() {
+        this.container.innerHTML ='로딩중'
     }
 
     render() {
