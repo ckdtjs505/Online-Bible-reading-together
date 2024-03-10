@@ -1,6 +1,6 @@
 import Utils from "../../shared/utils.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
-import DailyVerse from "../dailyVerse/index.js";
+import { setVerse } from "../dailyVerse/index.js";
 
 export default class CalendarView {
 	constructor() {
@@ -87,7 +87,7 @@ export default class CalendarView {
             }
             cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br>${readingPlanDetail}`
             cell.onclick  = () => {
-                DailyVerse.setVerse(readingPlan)
+                setVerse(readingPlan)
                 cell.classList.add('choiceDay');
             } 
         }
@@ -131,7 +131,7 @@ export default class CalendarView {
         this.currentMonth = new Date().getMonth() + 1; 
 
         const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${ this.currentDay }`)
-        DailyVerse.setVerse(readingPlan)
+        setVerse(readingPlan)
     }
 
 	setProgressInfo(completedDates){
