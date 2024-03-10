@@ -15,3 +15,8 @@ html {
 .choiceDay {
     background-color: #FF9999;
 }
+
+.finish {
+    background-color: rgb(255, 255, 230);
+    ;
+}

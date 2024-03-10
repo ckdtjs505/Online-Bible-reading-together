@@ -90,6 +90,8 @@ export default class CalendarView {
                 setVerse(readingPlan)
                 cell.classList.add('choiceDay');
             } 
+
+            cell.dataset.daycnt = readingPlan[0]?.dayCount || '';
         }
 
         // 달력의 마지막 날 이후로 남은 칸에 다음 달의 초반 일자를 추가
@@ -144,7 +146,7 @@ export default class CalendarView {
 				// 여기서 col은 각 셀(열)을 나타냄, 필요한 작업 수행
 
 				if( completedDates?.includes(parseInt(col.dataset.daycnt)) ){
-					col.style.backgroundColor = '#FFFFE6';
+					col.classList.add('finish')
 				}
 			}
 		}
