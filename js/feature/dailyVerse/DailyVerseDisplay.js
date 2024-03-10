@@ -5,14 +5,22 @@ export default class DailyVerseDisplay {
     }
 
     render() {
-        this.container.innerHTML = this.verse.map(({book, result : data} ) => {
+        if(this.verse.length === 0){
+            this.container.innerHTML = '함온성이 없는 날'
+        }   
+
+        const verseHtml = this.verse.length === 0 ?
+            `함온성이 없는 날` :
+            this.verse.map(({book, result : data} ) => {
             return `<div> ${book} </div>
-            ${data.map( ({chapter, verse, message}, key ) =>{
-                return `<div> 
-                    <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span>
-                </div>`
-            }).join(' <br> ')}`
-        }).join('');
+                ${data.map( ({chapter, verse, message}, key ) =>{
+                    return `<div> 
+                        <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span>
+                    </div>`
+                }).join(' <br> ')}`
+            }).join('');
+
+        this.container.innerHTML = verseHtml;
 
         this.container.querySelectorAll('.mes').forEach((ele) => {
             const div = document.createElement('div');
