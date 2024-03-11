@@ -16,10 +16,7 @@ export default class CalendarView {
 	}
 
     renderSkeleton() {
-        this.$calendarTable.querySelector('thead > tr').innerHTML = `
-            <td colspan="7" class="skeleton skeleton-text"></td>
-        `;
-
+        this.renderCalenderYearMonth();
         this.tbCalendar.innerHTML = `
             <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
             <tr><td colspan="7" class="skeleton skeleton-text"></td></tr>
@@ -29,19 +26,14 @@ export default class CalendarView {
         `;
     }
 
-    render(){
-        // 초기화 로직
-        while (this.tbCalendar.rows.length > 0) {
-			this.tbCalendar.deleteRow(this.tbCalendar.rows.length - 1);
-		}
-
+    renderCalenderYearMonth(){
         this.$calendarTable.querySelector('thead > tr').innerHTML = `<td class="calendarBtn" id="btnPrevCalendar">&#60;</td>
             <td colspan="5">
                 <span id="calYear">${this.currentYear}</span>년
                 <span id="calMonth">${Utils.autoLeftPad(this.currentMonth, 2)}</span>월
             </td>
             <td class="calendarBtn" id="nextNextCalendar">&#62;</td>`
-        
+
         document.querySelector('#btnPrevCalendar').addEventListener('click', () => {
             this.prevCalendar();
         })
@@ -49,6 +41,13 @@ export default class CalendarView {
         document.querySelector('#nextNextCalendar').addEventListener('click', () => {
             this.nextCalendar();
         })
+    }
+
+    render(){
+        // 초기화 로직
+        while (this.tbCalendar.rows.length > 0) {
+			this.tbCalendar.deleteRow(this.tbCalendar.rows.length - 1);
+		}
         
         const firstDayOfMonth = new Date(this.currentYear,  this.currentMonth -1, 1).getDay();
 		const monthDays = new Date(this.currentYear,  this.currentMonth, 0).getDate();
@@ -114,7 +113,9 @@ export default class CalendarView {
         const prevDate = new Date( this.currentYear,  (this.currentMonth - 1) - 1, this.currentDay);
         this.currentYear = prevDate.getFullYear(); 
         this.currentMonth = prevDate.getMonth() + 1; 
+        this.renderCalenderYearMonth()
 		this.render();
+        this.setProgressInfo();
 	}
 
 	/**
@@ -124,7 +125,9 @@ export default class CalendarView {
         const nextDate = new Date(this.currentYear, (this.currentMonth - 1) + 1, this.currentDay);
         this.currentYear = nextDate.getFullYear(); 
         this.currentMonth = nextDate.getMonth() + 1; 
+        this.renderCalenderYearMonth()
         this.render();
+        this.setProgressInfo();
     }
 
     selectToday(){
@@ -136,9 +139,9 @@ export default class CalendarView {
         setVerse(readingPlan)
     }
 
-	setProgressInfo(completedDates){
+	setProgressInfo(){
 		var table = this.tbCalendar;
-		console.log(completedDates)
+        let completedDates = this.userProgressData
 		// 테이블의 모든 행을 순회
 		for (var i = 0, row; row = table.rows[i]; i++) {
 			// 각 행의 모든 셀을 순회

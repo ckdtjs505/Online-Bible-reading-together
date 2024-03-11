@@ -7,7 +7,8 @@ const calenderInit = async () => {
     const userProgress = new UserProgressBibleReading('오창선');
     const userProgressData = await userProgress.loadUserProgress();
     calenderView.render();
-    calenderView.setProgressInfo(userProgressData?.row);
+    calenderView.userProgressData = userProgressData?.row || [];
+    calenderView.setProgressInfo();
 }
 
 export { calenderInit  }
