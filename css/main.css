@@ -1,4 +1,7 @@
-
+:root {
+    --reading-color: #A6E3E9; /* 오늘 읽어야 할 말씀의 색상 */
+    --read-color: #CBF1F5; /* 이미 읽은 말씀의 색상 */
+}
 
 .highlight {
     background-color: yellow;
@@ -25,28 +28,6 @@
 
 #prayOption {
     border-bottom: 1px solid;
-}
-
-.calendar-day {
-    cursor: pointer;
-}
-
-.calendar-day.sunday {
-    color: #FF4D4D; /* 일요일 셀에 대한 스타일 */
-}
-
-.calendar-day.saturday {
-    color: #4D4DFF; /* 토요일 셀에 대한 스타일 */
-}
-
-.calendar-day.next-month {
-    color: #A9A9A9; /* 다음달 셀에 대한 스타일 */
-    cursor: default;
-}
-
-.calendar-day.last-month {
-    color: #A9A9A9; /* 이전달 셀에 대한 스타일 */
-    cursor: default;
 }
 
 .skeleton {
