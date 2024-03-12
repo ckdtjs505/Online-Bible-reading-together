@@ -252,7 +252,7 @@ class BibleEntity {
 							}
 							if( chapter == 4){
 								if( verse == 15) this.info[idx].message = "너희 중에 누구든지 살인이나 도적질이나 악행이나 남의 일을 간섭하는 자로 고난을 받지 말려니와"
-								if( verse == 16) this.info[idx].message = "만일 그리스도인으로 고난을 받은즉 부끄러워 말고 도리어 그 이름으로 하나님께 영광을 돌리라Z"
+								if( verse == 16) this.info[idx].message = "만일 그리스도인으로 고난을 받은즉 부끄러워 말고 도리어 그 이름으로 하나님께 영광을 돌리라"
 								if( verse == 17) this.info[idx].message = "하나님 집에서 심판을 시작할 때가 되었나니 만일 우리에게 먼저 하면 하나님의 복음을 순종치 아니하는 자들의 그 마지막이 어떠하며"
 								if( verse == 18) this.info[idx].message = "또 의인이 겨우 구원을 얻으면 경건치 아니한 자와 죄인이 어디 서리요"
 								if( verse == 19) this.info[idx].message = "그러므로 하나님의 뜻대로 고난을 받는 자들은 또한 선을 행하는 가운데 그 영혼을 미쁘신 조물주께 부탁할찌어다"
