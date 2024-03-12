@@ -88,6 +88,7 @@ export default class CalendarView {
             cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br>${readingPlanDetail}`
             cell.onclick  = () => {
                 setVerse(readingPlan)
+                this.setChoiceClear();
                 cell.classList.add('choiceDay');
             } 
 
@@ -136,9 +137,17 @@ export default class CalendarView {
         setVerse(readingPlan)
     }
 
+    setChoiceClear(){
+        var table = this.tbCalendar;
+        for (var i = 0, row; row = table.rows[i]; i++) {
+			for (var j = 0, col; col = row.cells[j]; j++) {
+                col.classList.remove('choiceDay')
+			}
+		}
+    }
+
 	setProgressInfo(completedDates){
 		var table = this.tbCalendar;
-		console.log(completedDates)
 		// 테이블의 모든 행을 순회
 		for (var i = 0, row; row = table.rows[i]; i++) {
 			// 각 행의 모든 셀을 순회
