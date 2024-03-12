@@ -240,6 +240,11 @@ class BibleEntity {
 				if( doc === "1pet" ){
 					this.info.forEach( ({chapter, verse, message }, idx) => {
 						if( message === ''){
+							if( chapter == 2){
+								if( verse == 23) this.info[idx].message = "욕을 받으시되 대신 욕하지 아니하시고 고난을 받으시되 위협하지 아니하시고 오직 공의로 심판하시는 자에게 부탁하시며"
+								if( verse == 24) this.info[idx].message = "친히 나무에 달려 그 몸으로 우리 죄를 담당하셨으니 이는 우리로 죄에 대하여 죽고 의에 대하여 살게 하려 하심이라 저가 채찍에 맞음으로 너희는 나음을 얻었나니"
+								if( verse == 25) this.info[idx].message = "너희가 전에는 양과 같이 길을 잃었더니 이제는 너희 영혼의 목자와 감독 되신 이에게 돌아왔느니라"
+							}
 							if( chapter == 3){
 								if( verse == 20) this.info[idx].message = "그들은 전에 노아의 날 방주 예비할 동안 하나님이 오래 참고 기다리실 때에 순종치 아니하던 자들이라 방주에서 물로 말미암아 구원을 얻은 자가 몇명 뿐이니 겨우 여덟 명이라"
 								if( verse == 21) this.info[idx].message = "물은 예수 그리스도의 부활하심으로 말미암아 이제 너희를 구원하는 표니 곧 세례라 육체의 더러운 것을 제하여 버림이 아니요 오직 선한 양심이 하나님을 향하여 찾아가는 것이라"
