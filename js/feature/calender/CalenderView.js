@@ -74,21 +74,18 @@ export default class CalendarView {
             const dayOfWeek = date.getDay(); // 요일 체크 (0: 일요일, 6: 토요일)
 
             const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${day}`)
-            // const readingPlanDetail = readingPlan?.map( ( { book, start, end}) => {
-            //     return `<div style="font-size: 0.5rem"> ${book} <br> ${start}-${end}장  </div>`
-            // }).join('');
-
             const { readingBooks, readingStart, readingEnd } = readingPlan?.reduce((acc, { book, start, end }) => {
                 acc.readingBooks.push(book);
                 acc.readingStart.push(start);
                 acc.readingEnd.push(end);
                 return acc;
-              }, { readingBooks: [], readingStart: [], readingEnd: [] });
+            }, { readingBooks: [], readingStart: [], readingEnd: [] });
 
             
             let cellHtml;
-            if( readingPlan.length > 0 ) {
-                cellHtml = `<div style="font-size: 0.5rem; margin: auto; width:1.5rem; min-width:1.5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;"> ${readingBooks}  <br> ${readingStart}-${readingEnd}장  </div>`
+            if( readingPlan.length > 0) {
+                cellHtml = `<div style="font-size: 0.5rem; margin: auto; width: 50px; min-width:1.5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                ${readingBooks} <br> ${readingStart}-${readingEnd}장  </div>`
             }
 
             cell.className = 'calendar-day';
@@ -98,7 +95,7 @@ export default class CalendarView {
                 cell.classList.add('saturday');
             }
 
-            cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br> ${cellHtml}`
+            cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br> ${cellHtml || ''}`
             cell.onclick  = () => {
                 setVerse(readingPlan)
                 this.setChoiceClear();
