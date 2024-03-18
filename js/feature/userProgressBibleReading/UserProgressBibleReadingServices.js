@@ -1,5 +1,3 @@
-import AppState from "../../shared/AppState.js";
-
 const GOOGLE_API = `https://script.google.com`;
 const GOOGLE_KEY = `AKfycbwHiTDeqtNUONNMdS5nekjTPponxGXkXMAM56So9S9LddNrGEk9kJY1QqlZelZefmUD`;
 
