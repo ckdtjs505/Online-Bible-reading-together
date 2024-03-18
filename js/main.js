@@ -144,25 +144,25 @@ class View {
 
 		const prayForUser = document.getElementById('prayForUser');
 
-		// 로컬 스토리지에서 저장된  상태를 불러와 설정
-		const isPrayForUserVisible = localStorage.getItem('isPrayForUserVisible');
-		if (isPrayForUserVisible === 'true') {
-			prayForUser.style.display = 'block';
-			prayForUserCheckBox.checked = true; // prayForUserCheckBox의 체크  상태를 설정
-		} else {
-			prayForUser.style.display = 'none';
-			prayForUserCheckBox.checked = false; // prayForUserCheckBox의 체크  상태를 설정
-		}
+		// // 로컬 스토리지에서 저장된  상태를 불러와 설정
+		// const isPrayForUserVisible = localStorage.getItem('isPrayForUserVisible');
+		// if (isPrayForUserVisible === 'true') {
+		// 	prayForUser.style.display = 'block';
+		// 	prayForUserCheckBox.checked = true; // prayForUserCheckBox의 체크  상태를 설정
+		// } else {
+		// 	prayForUser.style.display = 'none';
+		// 	prayForUserCheckBox.checked = false; // prayForUserCheckBox의 체크  상태를 설정
+		// }
 
-		const prayBox = document.getElementById('prayBox');
-		const isPrayVisible = localStorage.getItem('isPrayVisible');
-		if (isPrayVisible === 'true') {
-			prayBox.style.display = 'block';
-			prayCheckBox.checked = true; //  체크  상태를 설정
-		} else {
-			prayBox.style.display = 'none';
-			prayCheckBox.checked = false; //  체크  상태를 설정
-		}
+		// const prayBox = document.getElementById('prayBox');
+		// const isPrayVisible = localStorage.getItem('isPrayVisible');
+		// if (isPrayVisible === 'true') {
+		// 	prayBox.style.display = 'block';
+		// 	prayCheckBox.checked = true; //  체크  상태를 설정
+		// } else {
+		// 	prayBox.style.display = 'none';
+		// 	prayCheckBox.checked = false; //  체크  상태를 설정
+		// }
 
 		this.setFontSize(this.fontSize)
 	}
