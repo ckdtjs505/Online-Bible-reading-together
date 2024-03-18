@@ -1,4 +1,4 @@
-import UserProgressBibleReadingServives from "./userProgressBibleReadingServices.js";
+import userProgressBibleReadingServices from "./userProgressBibleReadingServices.js";
 
 export default class UserProgressBibleReading {
     constructor(userId){
@@ -6,7 +6,7 @@ export default class UserProgressBibleReading {
     }
 
     async loadUserProgress(){
-        return UserProgressBibleReadingServives.getUserReadingProgress(this.userId);
+        return userProgressBibleReadingServices.getUserReadingProgress(this.userId);
     }
 
 }
