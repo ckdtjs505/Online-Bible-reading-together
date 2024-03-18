@@ -10,6 +10,8 @@ const calenderInit = async () => {
     calenderView.render();
     calenderView.userProgressData = userProgressData?.row || [];
     calenderView.setProgressInfo();
+
+    calenderView.selectToday();
 }
 
 export { calenderInit  }

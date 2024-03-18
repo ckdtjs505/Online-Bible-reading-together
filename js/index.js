@@ -6,9 +6,9 @@ import { bibleVideoInit } from "./feature/bibleVideo/index.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    calenderInit();
     FontSizeInit();
-    dailyVerseInit();
-    UserContentInit();
-    bibleVideoInit();
+    calenderInit();
+    // dailyVerseInit();
+    // UserContentInit();
+    // bibleVideoInit();
 });

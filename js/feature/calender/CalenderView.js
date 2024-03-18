@@ -1,7 +1,9 @@
 import AppState from "../../shared/appState.js";
 import Utils from "../../shared/utils.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
+import { bibleVideoInit } from "../bibleVideo/index.js";
 import { setVerse } from "../dailyVerse/index.js";
+import { UserContentInit } from "../userContent/index.js";
 
 export default class CalendarView {
 	constructor() {
@@ -100,11 +102,14 @@ export default class CalendarView {
             cell.onclick  = () => {
                 setVerse(readingPlan)
                 AppState.getInstance().readingPlan = readingPlan;
+                bibleVideoInit();
+                UserContentInit();
                 this.setChoiceClear();
                 cell.classList.add('choiceDay');
             } 
 
             cell.dataset.daycnt = readingPlan[0]?.dayCount || '';
+            cell.dataset.day = day;
         }
 
         // 달력의 마지막 날 이후로 남은 칸에 다음 달의 초반 일자를 추가
@@ -145,12 +150,7 @@ export default class CalendarView {
     }
 
     selectToday(){
-        this.currentDay = new Date().getDate();
-        this.currentYear = new Date().getFullYear(); 
-        this.currentMonth = new Date().getMonth() + 1; 
-
-        const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${ this.currentDay }`)
-        setVerse(readingPlan)
+        document.querySelector(`[data-day="${new Date().getDate()}"]`).click();
     }
 
     setChoiceClear(){

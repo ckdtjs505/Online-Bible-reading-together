@@ -22,7 +22,7 @@ class UserContent {
                 🙏 한줄 기도 :
                 <textarea id="pray" type="text" style="width:95%; height:5rem;"></textarea>
             </div>
-            제 <span id="day"> ${AppState.getInstance().readingPlan[0].dayCount || ''} </span> 일차 완료했습니다. <br> 
+            제 <span id="day"> ${AppState.getInstance().readingPlan[0]?.dayCount || ''} </span> 일차 완료했습니다. <br> 
         </div>
 
         <button id="saveButton" type="button" class="btn btn-primary" >복사하기</button>
