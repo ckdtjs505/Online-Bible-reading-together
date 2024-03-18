@@ -8,7 +8,6 @@ export default class DailyVerseService {
 				return response.json();
 			})
 			.then((info) => {
-				console.log(info)
 				if( chapter[book] === "1pet" ){
 					info.forEach( ({chapter, verse, message }, idx) => {
 						if( message === ''){
