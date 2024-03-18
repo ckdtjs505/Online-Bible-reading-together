@@ -21,7 +21,7 @@ html {
 }
 
 .choiceDay {
-    background-color: var(--reading-color);
+    background-color: var(--reading-color) !important;
 }
 
 .finish {
