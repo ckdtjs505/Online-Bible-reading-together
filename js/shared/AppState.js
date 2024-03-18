@@ -1,9 +1,10 @@
 export default class AppState {
     constructor() {
-      // 클래스가 처음 생성될 때, 초기 상태를 설정합니다.
+        // 클래스가 처음 생성될 때, 초기 상태를 설정합니다.
         this.state = {
             // 초기 상태 예시
             userProgress: null,
+            userName : localStorage.getItem('name') || ''
         };
     }
     // AppState 인스턴스를 저장할 변수
@@ -17,13 +18,20 @@ export default class AppState {
         return AppState.instance;
     }
 
-    // 사용자 진행 상황을 설정하는 메서드
-    setUserProgress(progress) {
-        this.state.userProgress = progress;
+    get userName(){
+        return this.state.userName
     }
 
-    // 사용자 진행 상황을 가져오는 메서드
-    getUserProgress() {
-        return this.state.userProgress;
+    set userName(name){
+        this.state.userName = name;
+        localStorage.setItem('name', name)
+    }
+
+    get readingPlan(){
+        return this.state.readingPlan;
+    }
+
+    set readingPlan(readingPlan){
+        this.state.readingPlan = readingPlan;
     }
 }
