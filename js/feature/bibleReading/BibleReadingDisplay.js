@@ -1,4 +1,4 @@
-import AppState from "../../shared/appState.js"
+import AppState from "../../shared/AppState.js"
 
 export class BibleReadingDisplay {
                 

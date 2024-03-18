@@ -1,4 +1,4 @@
-import AppState from "../../shared/appState.js";
+import AppState from "../../shared/AppState.js";
 import UserProgressBibleReading from "../userProgressBibleReading/index.js";
 import CalenderView from "./CalenderView.js";
 

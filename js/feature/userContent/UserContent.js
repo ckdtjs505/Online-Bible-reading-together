@@ -1,4 +1,4 @@
-import AppState from "../../shared/appState.js";
+import AppState from "../../shared/AppState.js";
 import { BibleReadingSaveService } from "../bilbeCopy/BibleReadingSaveService.js";
 import PrayOptionDisplay from "./prayOptionDisplay.js";
 

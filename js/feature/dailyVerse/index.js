@@ -1,4 +1,4 @@
-import AppState from "../../shared/appState.js";
+import AppState from "../../shared/AppState.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
 import DailyVerseDisplay from "./DailyVerseDisplay.js";
 import DailyVerseService from "./DailyVerseServices.js";
