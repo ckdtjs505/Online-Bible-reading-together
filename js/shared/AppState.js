@@ -4,7 +4,8 @@ export default class AppState {
         this.state = {
             // 초기 상태 예시
             userProgress: null,
-            userName : localStorage.getItem('name') || ''
+            userName : localStorage.getItem('name') || '',
+            fontSize : JSON.parse(localStorage.getItem('fontSize')) || 1.2
         };
     }
     // AppState 인스턴스를 저장할 변수
@@ -33,5 +34,15 @@ export default class AppState {
 
     set readingPlan(readingPlan){
         this.state.readingPlan = readingPlan;
+    }
+
+    get fontSize(){
+        return this.state.fontSize;
+    }
+
+    set fontSize(fontSize){
+        this.state.fontSize = fontSize;
+        document.getElementById("content").style.fontSize = fontSize + 'rem';
+        localStorage.setItem("fontSize", fontSize);
     }
 }

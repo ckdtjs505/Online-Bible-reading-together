@@ -1,3 +1,5 @@
+import AppState from "../../shared/appState.js";
+
 export default class DailyVerseDisplay {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -28,6 +30,8 @@ export default class DailyVerseDisplay {
             }).join('<br>');
 
         this.container.innerHTML = verseHtml;
+
+        this.container.style.fontSize = AppState.getInstance().fontSize + 'rem';
 
         this.container.querySelectorAll('.mes').forEach((ele) => {
             const div = document.createElement('div');
