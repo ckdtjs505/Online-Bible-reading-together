@@ -1,3 +1,4 @@
+import AppState from "../../shared/appState.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
 import DailyVerseDisplay from "./DailyVerseDisplay.js";
 import DailyVerseService from "./DailyVerseServices.js";
@@ -9,6 +10,7 @@ const dailyVerseInit = async () => {
 
     const readingPlan = getReadingPlanForDate(`${currentYear}-${currentMonth}-${currentDay}`);
     setVerse(readingPlan)
+    AppState.getInstance().readingPlan = readingPlan;
 }
 
 const setVerse = async (readingPlan) => {

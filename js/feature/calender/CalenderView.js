@@ -1,3 +1,4 @@
+import AppState from "../../shared/appState.js";
 import Utils from "../../shared/utils.js";
 import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
 import { setVerse } from "../dailyVerse/index.js";
@@ -98,6 +99,7 @@ export default class CalendarView {
             cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br> ${cellHtml || ''}`
             cell.onclick  = () => {
                 setVerse(readingPlan)
+                AppState.getInstance().readingPlan = readingPlan;
                 this.setChoiceClear();
                 cell.classList.add('choiceDay');
             } 

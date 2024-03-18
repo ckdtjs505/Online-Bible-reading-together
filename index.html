@@ -55,37 +55,10 @@
 
     <br>
     <section>
-        <div id="prayOption" style="padding-bottom: 1rem;">
-        </div>
-
-        <div id="userContent" style="padding-top: 1rem;">
-            <div id="submitdata">
-
-                <div id="prayForUser" >
-                    💝앞사람을  위한 기도 : 
-                    <textarea id="prayForUserText" type="text" style="width:95%; height:5rem;"></textarea>
-                </div>
-
-                <div> 🌼 이름 : <span id="name"></span> </div> 
-
-                📖 오늘 내게 주신 말씀 : <br>  
-                <div id="myMessage"> </div>
-
-                <div id="prayBox">
-                    🙏 한줄 기도 :
-                    <textarea id="pray" type="text" style="width:95%; height:5rem;"></textarea>
-                </div>
-                제 <span id="day"> </span> 일차 완료했습니다. <br> 
-            </div>
-
-            <button type="button" class="btn btn-primary" onclick="copyToClipboard()">복사하기</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                이름바꾸기
-            </button>
-        </div>
+        <div id="prayOption" style="padding-bottom: 1rem;"></div>
+        <div id="userContent" style="padding-top: 1rem;"></div>
     </section>
 
-  
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -98,7 +71,7 @@
             <input id="nameInput" type="text"> 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">종료</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closePopup">종료</button>
           <button type="button" class="btn btn-primary" id="changeName">바꾸기</button>
         </div>
       </div>

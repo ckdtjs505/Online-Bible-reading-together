@@ -21,9 +21,6 @@ export default class UserProgressBibleReadingServives {
 		)
         .then((response) => {
             const res =  response.json();
-             // 사용 예시
-            const appState = AppState.getInstance();
-            appState.setUserProgress(res);
             return res;
         }).catch( (e) => {
             console.error(`어드민 정보를 못가지고 옴`)
