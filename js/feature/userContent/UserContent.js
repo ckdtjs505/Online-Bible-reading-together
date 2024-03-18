@@ -1,6 +1,6 @@
 import AppState from "../../shared/AppState.js";
 import { BibleReadingSaveService } from "../bilbeCopy/BibleReadingSaveService.js";
-import PrayOptionDisplay from "./PrayOptionDisplay.js";
+import PrayOptionDisplay from "./prayOptionDisplay.js";
 
 class UserContent {
     constructor() {

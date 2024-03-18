@@ -1,5 +1,5 @@
 import UserContent from "./UserContent.js";
-import PrayOptionDisplay from "./PrayOptionDisplay.js"
+import PrayOptionDisplay from "./prayOptionDisplay.js"
 
 const UserContentInit = () => {
     const prayOptionDisplay = new PrayOptionDisplay();
