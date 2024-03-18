@@ -87,7 +87,7 @@ export default class CalendarView {
 
             let cellHtml;
             if( readingPlan.length > 0) {
-                cellHtml = `<div style="font-size: 0.5rem; margin: auto; width: 50px; min-width:1.5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                cellHtml = `<div style="font-size: 0.5rem; margin: auto; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
                 ${readingBooks} <br> ${readingStart[0]}-${readingEnd[0]}장  </div>`
             }
 
