@@ -56,15 +56,9 @@ const BibleReadingsData = [
     { date: '2024-3-13', lang: 'kor', book: '베드로전서', start: '1', end: '5', dayCount: 56 },
     { date: '2024-3-14', lang: 'kor', book: '베드로후서', start: '1', end: '3', dayCount: 57 },
     { date: '2024-3-15', lang: 'kor', book: '요한1서', start: '1', end: '5', dayCount: 58 },
-    {
-        date: '2024-3-16',
-        readings: [
-            { lang: 'kor', book: '요한2서', start: '1', end: '1'},
-            { lang: 'kor', book: '요한3서', start: '1', end: '1'},
-            { lang: 'kor', book: '유다서', start: '1', end: '1'}
-        ],
-        dayCount: 59
-    },
+    { date: '2024-3-16', lang: 'kor', book: '요한2서', start: '1', end: '1', dayCount: 59 },
+    { date: '2024-3-16', lang: 'kor', book: '요한3서', start: '1', end: '1', dayCount: 59 },
+    { date: '2024-3-16', lang: 'kor', book: '유다서', start: '1', end: '1', dayCount: 59 },
     { date: '2024-3-18', lang: 'kor', book: '요한계시록', start: '1', end: '3', dayCount: 60 },
     { date: '2024-3-19', lang: 'kor', book: '요한계시록', start: '4', end: '9', dayCount: 61 },
     { date: '2024-3-20', lang: 'kor', book: '요한계시록', start: '10', end: '13', dayCount: 62 },
@@ -175,18 +169,11 @@ export const chapter = {
 
 export const getReadingPlanForDate = (date) => {
     // 주어진 날짜에 해당하는 읽기 계획을 찾습니다.
-    const plan = BibleReadingsData.find(plan => plan.date === date);
+    const plan = BibleReadingsData.filter(plan => plan.date === date);
 
     // 찾은 계획이 있다면, 해당 계획을 리턴합니다.
-    if (plan) {
-        // 여러 readings가 있는 경우와 단일 reading인 경우를 모두 처리
-        if (plan.readings && Array.isArray(plan.readings)) {
-        // 여러 readings가 있는 경우
-        return plan.readings;
-        } else {
-        // 단일 reading인 경우
-        return [plan]; // 일관된 배열 형태로 리턴
-        }
+    if (plan && plan.length > 0) {
+        return plan; // 일관된 배열 형태로 리턴
     } else {
         // 해당 날짜에 대한 계획이 없는 경우
         return [];

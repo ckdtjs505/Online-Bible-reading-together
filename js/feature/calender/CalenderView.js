@@ -160,7 +160,7 @@ export default class CalendarView {
 		}
     }
 
-	setProgressInfo(completedDates){
+	setProgressInfo(){
 		var table = this.tbCalendar;
 		// 테이블의 모든 행을 순회
 		for (var i = 0, row; row = table.rows[i]; i++) {
@@ -168,7 +168,7 @@ export default class CalendarView {
 			for (var j = 0, col; col = row.cells[j]; j++) {
 				// 여기서 col은 각 셀(열)을 나타냄, 필요한 작업 수행
 
-				if( completedDates?.includes(parseInt(col.dataset.daycnt)) ){
+				if( this.userProgressData?.includes(parseInt(col.dataset.daycnt)) ){
 					col.classList.add('finish')
 				}
 			}

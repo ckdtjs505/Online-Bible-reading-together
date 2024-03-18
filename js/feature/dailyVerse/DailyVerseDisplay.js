@@ -19,13 +19,13 @@ export default class DailyVerseDisplay {
         const verseHtml = this.verse.length === 0 ?
             `함온성이 없는 날` :
             this.verse.map(({book, result : data} ) => {
-            return `<div> ${book} </div>
+            return `<div>  <strong> ${book} </strong>  </div>
                 ${data.map( ({chapter, verse, message}, key ) =>{
                     return `<div> 
                         <span class='mes' id="mes_${key}"> ${chapter}:${verse} ${message} </span>
                     </div>`
                 }).join(' <br> ')}`
-            }).join('');
+            }).join('<br>');
 
         this.container.innerHTML = verseHtml;
 
