@@ -10,7 +10,7 @@ export default class DailyVerseDisplay {
     }
 
     renderLoading() {
-        this.container.innerHTML ='로딩중'
+        this.container.innerHTML ='함온성 말씀을 가져오고 있습니다. 😁'
     }
 
     render() {

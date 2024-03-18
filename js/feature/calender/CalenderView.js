@@ -84,11 +84,10 @@ export default class CalendarView {
                 return acc;
             }, { readingBooks: [], readingStart: [], readingEnd: [] });
 
-            
             let cellHtml;
             if( readingPlan.length > 0) {
                 cellHtml = `<div style="font-size: 0.5rem; margin: auto; width: 50px; min-width:1.5rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
-                ${readingBooks} <br> ${readingStart}-${readingEnd}장  </div>`
+                ${readingBooks} <br> ${readingStart[0]}-${readingEnd[0]}장  </div>`
             }
 
             cell.className = 'calendar-day';
