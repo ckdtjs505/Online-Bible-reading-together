@@ -36,6 +36,14 @@ export default class AppState {
         this.state.readingPlan = readingPlan;
     }
 
+    get viewDayCnt(){
+        return this.state.viewDayCnt;
+    }
+
+    set viewDayCnt(cnt){
+        this.state.viewDayCnt = cnt;
+    }
+
     get fontSize(){
         return this.state.fontSize;
     }

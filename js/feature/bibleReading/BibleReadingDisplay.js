@@ -18,8 +18,10 @@ export class BibleReadingDisplay {
             return acc;
         }, { readingBooks: [], readingStart: [], readingEnd: [] });
 
-
-        if(readingBooks.length > 0 &&readingStart.length > 0 && readingEnd.length > 0  )
-        this.container.innerHTML = `<span> ${readingBooks} ${readingStart}장 ~ ${readingEnd}장 (${AppState.getInstance().readingPlan[0]?.dayCount}일차)</span>`
+        if(readingBooks.length > 0 &&readingStart.length > 0 && readingEnd.length > 0  ){
+            this.container.innerHTML = `<span> ${readingBooks} ${readingStart}장 ~ ${readingEnd}장 (${AppState.getInstance().viewDayCnt || ''}일차)</span>`
+        }else {
+            this.container.innerHTML = '';
+        }
     }
 }

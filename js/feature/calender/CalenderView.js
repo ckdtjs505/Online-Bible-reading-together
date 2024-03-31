@@ -101,6 +101,7 @@ export default class CalendarView {
             cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br> ${cellHtml || ''}`
             cell.onclick  = () => {
                 AppState.getInstance().readingPlan = readingPlan;
+                AppState.getInstance().viewDayCnt = readingPlan[0]?.dayCount >= 70 ?  readingPlan[0]?.dayCount - 69 : readingPlan[0]?.dayCount;
                 bibleReadingTitle();
                 setVerse(readingPlan)
                 bibleVideoInit();
