@@ -130,7 +130,8 @@ export default class CalendarView {
 	 * @brief   이전달 버튼 클릭시
 	 */
 	prevCalendar() {
-        const prevDate = new Date( this.currentYear,  (this.currentMonth - 1) - 1, this.currentDay);
+        const prevDate = new Date( this.currentYear,  (this.currentMonth - 1) - 1, 1);
+        this.currentDay = prevDate.getDate();
         this.currentYear = prevDate.getFullYear(); 
         this.currentMonth = prevDate.getMonth() + 1; 
         this.renderCalenderYearMonth()
@@ -142,7 +143,9 @@ export default class CalendarView {
 	 * @brief   다음달 버튼 클릭시
 	 */
 	nextCalendar() {
-        const nextDate = new Date(this.currentYear, (this.currentMonth - 1) + 1, this.currentDay);
+        // 다음달의 무조건 첫째일을 지정한다. 
+        const nextDate = new Date(this.currentYear, (this.currentMonth - 1) + 1, 1);
+        this.currentDay = nextDate.getDate();
         this.currentYear = nextDate.getFullYear(); 
         this.currentMonth = nextDate.getMonth() + 1; 
         this.renderCalenderYearMonth()
