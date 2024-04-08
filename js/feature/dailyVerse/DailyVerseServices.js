@@ -47,6 +47,26 @@ export default class DailyVerseService {
 						}
 					})
 				}
+				else if(chapter[book] === "ge"){
+					info.forEach( ({chapter, verse, message }, idx) => {
+						if( message === ''){
+							if( chapter == 30){
+								if( verse == 32) info[idx].message = '오늘 내가 외삼촌의 양 떼에 두루 다니며 그 양 중에 아롱진 것과 점 있는 것과 검은 것을 가려내며 또 염소 중에 점 있는 것과 아롱진 것을 가려내리니 이같은 것이 내 품삯이 되리이다';
+								if( verse == 33) info[idx].message = '후일에 외삼촌께서 오셔서 내 품삯을 조사하실 때에 나의 의가 내 대답이 되리이다 내게 혹시 염소 중 아롱지지 아니한 것이나 점이 없는 것이나 양 중에 검지 아니한 것이 있거든 다 도둑질한 것으로 인정하소서'; 
+								if( verse == 34) info[idx].message = '라반이 이르되 내가 네 말대로 하리라 하고';
+								if( verse == 35) info[idx].message = '그 날에 그가 숫염소 중 얼룩무늬 있는 것과 점 있는 것을 가리고 암염소 중 흰 바탕에 아롱진 것과 점 있는 것을 가리고 양 중의 검은 것들을 가려 자기 아들들의 손에 맡기고'; 
+								if( verse == 36) info[idx].message = '자기와 야곱의 사이를 사흘 길이 뜨게 하였고 야곱은 라반의 남은 양 떼를 치니라';
+								if( verse == 37) info[idx].message = '야곱이 버드나무와 살구나무와 신풍나무의 푸른 가지를 가져다가 그것들의 껍질을 벗겨 흰 무늬를 내고';
+								if( verse == 38) info[idx].message = '그 껍질 벗긴 가지를 양 떼가 와서 먹는 개천의 물 구유에 세워 양 떼를 향하게 하매 그 떼가 물을 먹으러 올 때에 새끼를 배니';
+								if( verse == 39) info[idx].message = '가지 앞에서 새끼를 배므로 얼룩얼룩한 것과 점이 있고 아롱진 것을 낳은지라';
+								if( verse == 40) info[idx].message = '야곱이 새끼 양을 구분하고 그 얼룩무늬와 검은 빛 있는 것을 라반의 양과 서로 마주보게 하며 자기 양을 따로 두어 라반의 양과 섞이지 않게 하며'; 
+								if( verse == 41) info[idx].message = '튼튼한 양이 새끼 밸 때에는 야곱이 개천에다가 양 떼의 눈 앞에 그 가지를 두어 양이 그 가지 곁에서 새끼를 배게 하고';
+								if( verse == 42) info[idx].message = '약한 양이면 그 가지를 두지 아니하니 그렇게 함으로 약한 것은 라반의 것이 되고 튼튼한 것은 야곱의 것이 된지라'; 
+								if( verse == 43) info[idx].message = '이에 그 사람이 매우 번창하여 양 떼와 노비와 낙타와 나귀가 많았더라';
+							}
+						}
+					})
+				}
                 return info.map(data => new DailyVerseModel( data.chapter, data.message, data.verse));
 			}).catch( (e) => {
 				console.error(`getTodayDat를 못가지고 옴`)
