@@ -1,4 +1,4 @@
-import { chapter } from "../bibleReading/BibleReadingData.js";
+import { bookKeyNumber, chapter } from "../bibleReading/BibleReadingData.js";
 import DailyVerseModel from "./DailyVerseModel.js";
 const API_URL = 'https://yesu.io/bible';
 export default class DailyVerseService {
@@ -75,10 +75,9 @@ export default class DailyVerseService {
 	}
 
 	static getDailyVerseInKorean({ lang, book, start, end }) {
-
 		const queryParams = new URLSearchParams({
 			type: 'getBible',
-			book : 1,
+			book : bookKeyNumber(book),
 			start,
 			end
 		});
