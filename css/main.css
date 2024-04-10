@@ -57,3 +57,7 @@
 .skeleton {
     animation: loading 1.5s infinite;
 }
+
+.active {
+    background-color: #CBF1F5;
+}

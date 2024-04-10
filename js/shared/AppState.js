@@ -5,7 +5,8 @@ export default class AppState {
             // 초기 상태 예시
             userProgress: null,
             userName : localStorage.getItem('name') || '',
-            fontSize : JSON.parse(localStorage.getItem('fontSize')) || 1.2
+            fontSize : JSON.parse(localStorage.getItem('fontSize')) || 1.2,
+            bibleType : localStorage.getItem('bibleType') || "KRV"
         };
     }
     // AppState 인스턴스를 저장할 변수
@@ -53,4 +54,14 @@ export default class AppState {
         document.getElementById("content").style.fontSize = fontSize + 'rem';
         localStorage.setItem("fontSize", fontSize);
     }
+
+    get bibleType(){
+        return this.state.bibleType;
+    }
+
+    set bibleType(bibleType){
+        this.state.bibleType = bibleType;
+        localStorage.setItem("bibleType", bibleType);
+    }
+
 }

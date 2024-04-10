@@ -73,6 +73,36 @@ export default class DailyVerseService {
                 return [];
 			});
 	}
+
+	static getDailyVerseInKorean({ lang, book, start, end }) {
+
+		const queryParams = new URLSearchParams({
+			type: 'getBible',
+			book : 1,
+			start,
+			end
+		});
+
+		return fetch(
+			`https://script.google.com/macros/s/AKfycbyG3RF_QF7FTnl-rtPKLbuAp6Fp8dhyoDD1oCR_0PI54zAJgHU_RlsOkU3VgOof2Q/exec?${queryParams}`,
+			{
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8',
+				},
+			}
+		).
+		then((response) => {
+            const res =  response.json();
+			return res;
+        }).
+		then((res) => {
+			console.log(res);
+			return res.map(data => new DailyVerseModel( data.chapter, data.message, data.verse));
+        }).catch( (e) => {
+            console.error(e)
+        });
+	}
 }
 
 

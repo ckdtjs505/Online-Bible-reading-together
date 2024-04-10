@@ -13,9 +13,16 @@ const dailyVerseInit = async () => {
     AppState.getInstance().readingPlan = readingPlan;
 }
 
-const setVerse = async (readingPlan) => {
+const setVerse = async (readingPlan, type) => {
     const promises = readingPlan.map( async ({start, end, lang, book})  =>  {
-        const result = await DailyVerseService.getDailyVerse({ start, end, lang, book});
+        let result;
+
+        if( AppState.getInstance().bibleType == "KRV"){
+            result = await DailyVerseService.getDailyVerse({ start, end, lang, book});
+        }else {
+            result = await DailyVerseService.getDailyVerseInKorean({ start, end, lang, book});
+        }
+
         // 비동기 작업의 결과와 해당 결과의 'book' 키를 객체로 반환
         return { book, result };
     })
