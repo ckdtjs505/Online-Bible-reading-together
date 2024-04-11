@@ -25,6 +25,13 @@ export default class BibleTypeDisplay {
             AppState.getInstance().bibleType = "KOREAN";
             window.location.reload();
         })
+
+        this.container.querySelector("#kiv").addEventListener('click', () => {
+            this.container.querySelectorAll('button').forEach( (ele) => ele.classList.remove('active'))
+            this.container.querySelector('#kiv').classList.add('active')
+            AppState.getInstance().bibleType = "KIV";
+            window.location.reload();
+        })
     }
     /**
 	 * 성경개관 영상
@@ -32,10 +39,8 @@ export default class BibleTypeDisplay {
 	 */
 	render(){
 
-        if(this.bibleType === "KOREAN") {
-
-        }
-        this.container.innerHTML = `<button id="krv" class=${this.bibleType === "KRV" ? "active" : "none" } style="border: none;border-radius: 1rem;margin-right:0.5rem" >개역한글 </button>
+        this.container.innerHTML = `<button  id="kiv"  class=${this.bibleType === "KIV" ? "active" : "none" } style="border: none;border-radius: 1rem; margin-right:0.5rem" >개역개정</button>
+        <button id="krv" class=${this.bibleType === "KRV" ? "active" : "none" } style="border: none;border-radius: 1rem;margin-right:0.5rem" >개역한글 </button>
         <button  id="korean"  class=${this.bibleType === "KOREAN" ? "active" : "none" } style="border: none;border-radius: 1rem; margin-right:0.5rem" >우리말 성경</button>`
     }
 }

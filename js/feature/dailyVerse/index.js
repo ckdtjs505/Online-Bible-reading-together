@@ -19,6 +19,8 @@ const setVerse = async (readingPlan, type) => {
 
         if( AppState.getInstance().bibleType == "KRV"){
             result = await DailyVerseService.getDailyVerse({ start, end, lang, book});
+        }else if( AppState.getInstance().bibleType == "KIV" ){
+            result = await DailyVerseService.getDailyVerseInKIV({ start, end, lang, book});
         }else {
             result = await DailyVerseService.getDailyVerseInKorean({ start, end, lang, book});
         }

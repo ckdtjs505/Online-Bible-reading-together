@@ -6,7 +6,7 @@ export default class AppState {
             userProgress: null,
             userName : localStorage.getItem('name') || '',
             fontSize : JSON.parse(localStorage.getItem('fontSize')) || 1.2,
-            bibleType : localStorage.getItem('bibleType') || "KRV"
+            bibleType : localStorage.getItem('bibleType') || "KIV"
         };
     }
     // AppState 인스턴스를 저장할 변수

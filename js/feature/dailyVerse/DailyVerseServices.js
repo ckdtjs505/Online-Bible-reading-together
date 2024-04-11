@@ -102,6 +102,35 @@ export default class DailyVerseService {
             console.error(e)
         });
 	}
+
+	static getDailyVerseInKIV({ lang, book, start, end }) {
+		const queryParams = new URLSearchParams({
+			type: 'getKIV',
+			book : bookKeyNumber(book),
+			start,
+			end
+		});
+
+		return fetch(
+			`https://script.google.com/macros/s/AKfycbxqS1R9w1vnTRyS379DAmUxKapSdJdohYN6AuFTL9rwWsn5y2QZzGlhzv03wWWyNN2s/exec?${queryParams}`,
+			{
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8',
+				},
+			}
+		).
+		then((response) => {
+            const res =  response.json();
+			return res;
+        }).
+		then((res) => {
+			console.log(res);
+			return res.map(data => new DailyVerseModel( data.chapter, data.message, data.verse));
+        }).catch( (e) => {
+            console.error(e)
+        });
+	}
 }
 
 
