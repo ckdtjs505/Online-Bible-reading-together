@@ -182,6 +182,41 @@ const BibleReadingsData = [
     { date: '2024-8-2', lang: 'kor', book: '에스라', start: '5', end: '7', dayCount: 170 },
     { date: '2024-8-3', lang: 'kor', book: '에스라', start: '8', end: '10', dayCount: 171 },
 
+    { date: '2024-8-5', lang: 'kor', book: '느헤미야', start: '1', end: '4', dayCount: 172 },
+    { date: '2024-8-6', lang: 'kor', book: '느헤미야', start: '5', end: '7', dayCount: 173 },
+    { date: '2024-8-7', lang: 'kor', book: '느헤미야', start: '8', end: '10', dayCount: 174 },
+    { date: '2024-8-8', lang: 'kor', book: '느헤미야', start: '11', end: '13', dayCount: 175 },
+    { date: '2024-8-9', lang: 'kor', book: '에스더', start: '1', end: '5', dayCount: 176 },
+    { date: '2024-8-10', lang: 'kor', book: '에스더', start: '6', end: '10', dayCount: 177 },
+
+    { date: '2024-8-12', lang: 'kor', book: '욥기', start: '1', end: '5', dayCount: 178 },
+    { date: '2024-8-13', lang: 'kor', book: '욥기', start: '6', end: '10', dayCount: 179 },
+    { date: '2024-8-14', lang: 'kor', book: '욥기', start: '11', end: '15', dayCount: 180 },
+    { date: '2024-8-15', lang: 'kor', book: '욥기', start: '16', end: '20', dayCount: 181 },
+    { date: '2024-8-16', lang: 'kor', book: '욥기', start: '21', end: '26', dayCount: 182 },
+    { date: '2024-8-17', lang: 'kor', book: '욥기', start: '27', end: '31', dayCount: 183 },
+
+    { date: '2024-8-19', lang: 'kor', book: '욥기', start: '32', end: '37', dayCount: 184 },
+    { date: '2024-8-20', lang: 'kor', book: '욥기', start: '38', end: '42', dayCount: 185 },
+    { date: '2024-8-21', lang: 'kor', book: '시편', start: '1', end: '10', dayCount: 186 },
+    { date: '2024-8-22', lang: 'kor', book: '시편', start: '11', end: '20', dayCount: 187 },
+    { date: '2024-8-23', lang: 'kor', book: '시편', start: '21', end: '30', dayCount: 188 },
+    { date: '2024-8-24', lang: 'kor', book: '시편', start: '31', end: '36', dayCount: 189 },
+
+    { date: '2024-8-26', lang: 'kor', book: '시편', start: '37', end: '41', dayCount: 190 },
+    { date: '2024-8-27', lang: 'kor', book: '시편', start: '42', end: '49', dayCount: 191 },
+    { date: '2024-8-28', lang: 'kor', book: '시편', start: '50', end: '58', dayCount: 192 },
+    { date: '2024-8-29', lang: 'kor', book: '시편', start: '59', end: '67', dayCount: 193 },
+    { date: '2024-8-30', lang: 'kor', book: '시편', start: '68', end: '72', dayCount: 194 },
+    { date: '2024-8-31', lang: 'kor', book: '시편', start: '73', end: '78', dayCount: 195 },
+
+    { date: '2024-9-2', lang: 'kor', book: '시편', start: '79', end: '89', dayCount: 196 },
+    { date: '2024-9-3', lang: 'kor', book: '시편', start: '90', end: '101', dayCount: 197 },
+    { date: '2024-9-4', lang: 'kor', book: '시편', start: '102', end: '106', dayCount: 198 },
+    { date: '2024-9-5', lang: 'kor', book: '시편', start: '107', end: '118', dayCount: 199 },
+    { date: '2024-9-6', lang: 'kor', book: '시편', start: '119', end: '119', dayCount: 200 },
+    { date: '2024-9-7', lang: 'kor', book: '시편', start: '120', end: '137', dayCount: 201 },
+
 ];
 
 export const chapter = {
