@@ -34,6 +34,7 @@ const setVerse = async (readingPlan, type) => {
     const versesModels = await Promise.all(promises);
     verseDisplay.setVerse(versesModels)
     verseDisplay.render();
+    verseDisplay.renderLocalStorage();
 }
 
 export {dailyVerseInit, setVerse};

@@ -1,4 +1,5 @@
 import AppState from "../../shared/AppState.js";
+import Utils from "../../shared/utils.js";
 import { BibleReadingSaveService } from "../bilbeCopy/BibleReadingSaveService.js";
 import PrayOptionDisplay from "./PrayOptionDisplay.js";
 
@@ -10,7 +11,7 @@ class UserContent {
         this.container.innerHTML = `<div id="submitdata">
             <div id="prayForUser" style="display: ${PrayOptionDisplay.isPrayForUserVisible ? 'block' : 'none'};">
                 💝앞사람을  위한 기도 : 
-                <textarea id="prayForUserText" type="text" style="width:95%; height:5rem;"></textarea>
+                <textarea id="prayForUserText" type="text" style="width:95%; height:5rem;">${localStorage.getItem(`${AppState.getInstance().viewDayCnt}_${Utils.getToday()}_prayForUser`) || ''}</textarea>
             </div>
 
             <div> 🌼 이름 : <span id="name">${AppState.getInstance().userName}</span> </div> 
@@ -20,7 +21,7 @@ class UserContent {
 
             <div id="prayBox" style="display: ${PrayOptionDisplay.isPrayVisible ? 'block' : 'none'};">
                 🙏 한줄 기도 :
-                <textarea id="pray" type="text" style="width:95%; height:5rem;"></textarea>
+                <textarea id="pray" type="text" style="width:95%; height:5rem;">${localStorage.getItem(`${AppState.getInstance().viewDayCnt}_${Utils.getToday()}_pray`) || ''}</textarea>
             </div>
             제 <span id="day"> ${AppState.getInstance().viewDayCnt || ''} </span> 일차 완료했습니다. <br> 
         </div>
@@ -44,6 +45,14 @@ class UserContent {
         document.querySelector("#saveButton").addEventListener('click', () => {
             this.copy();
 		});
+        
+        document.querySelector('#pray').addEventListener('input', (event) => {
+            localStorage.setItem(`${AppState.getInstance().viewDayCnt}_${Utils.getToday()}_pray`, event.target.value);
+        });
+
+        document.querySelector('#prayForUserText').addEventListener('input', (event) => {
+            localStorage.setItem(`${AppState.getInstance().viewDayCnt}_${Utils.getToday()}_prayForUser`, event.target.value);
+        });
     }
 
     copy(){
