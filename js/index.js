@@ -33,5 +33,9 @@ document.addEventListener('scroll', ()=> {
         document.querySelector("#uparrow").style.display = 'block';
     }
 
+    if(scrollTop == 0){
+        document.querySelector("#uparrow").style.display = 'none';
+    }
+
     lastScroll = scrollTop;
 })
