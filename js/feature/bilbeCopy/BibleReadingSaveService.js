@@ -27,4 +27,33 @@ export class BibleReadingSaveService {
             body: queryParams
         })
     }
+
+    static getHamonData({
+        userName
+    }){
+        const queryParams = new URLSearchParams({
+            "type" : 'getHamon', 
+            "userName" : userName,
+        });
+
+        return fetch(`${GOOGLE_API}/macros/s/AKfycbwI5ISJikQKHH1QzRNmQc2NPA6uDpPOd-X_M9V0HAbCqTdH8qFzhxQH-hpBx6hMzSXf/exec?${queryParams}`, {
+            redirect: 'follow',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8',
+            },
+        }).then((response) => {
+            const res =  response.json();
+            return res;
+
+        }).then( (res) => {
+            if(res.result == "success"){
+                return res.row;
+            }else {
+                return [];
+            }
+        })
+        .catch( (e) => {
+            console.log(e)
+        })
+    }
 }
