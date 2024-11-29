@@ -1,12 +1,11 @@
+import { BibleReadingsData } from "./feature/bibleReading/BibleReadingData.js";
 import { BibleTypeInit } from "./feature/bibleType/index.js";
 import { BibleReadingSaveService } from "./feature/bilbeCopy/BibleReadingSaveService.js";
 import { calenderInit } from "./feature/calender/index.js";
 import { FontSizeInit } from "./feature/fontSize/index.js";
 
-if(document.location.pathname === "/finish.html"){
+if(document.location.pathname?.includes("/finish.html")){
     document.addEventListener('DOMContentLoaded', async () => {
-
-        
         function getQueryParam(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -14,27 +13,63 @@ if(document.location.pathname === "/finish.html"){
         
         // 'userName' 파라미터 값 가져오기
         const userName = getQueryParam('userName');
+        document.getElementById("title").innerHTML = `함 온 성 <span style="font-size: 1rem">(${userName}) </span>`
 
         let data = await BibleReadingSaveService.getHamonData({
             userName
         })
 
-        document.getElementById("message").innerHTML = data.map( (data) => {
-            return data[3]
-        }).join('<br>')
+        let before = '';
+        document.getElementById("messageBox").innerHTML = data.map( (data) => {
+            let daycount = data[2];
+            let message = data[3];
+            let book = BibleReadingsData[daycount - 2].book
+            if(before !== book){
+                before= book;
+                return (`<br> <div > <div> <strong> ${book} </strong> </div>${message}</div> `)
+            }else {
+                return (`<div >${message}</div>`)
+            }
+        }).join('')
 
-        document.getElementById("pray").innerHTML = data.map( (data) => {
+        document.getElementById("prayBox").innerHTML = data.map( (data) => {
 
             if( data[4] ){
-                return `<strong> ${data[2]}</strong> : ${data[4]} <br>`
+                return `<strong> ${data[2]}일 </strong> : ${data[4]} <br>`
             }else {
                 return '';
             }
         }).join('')
 
-        document.getElementById("prayFor").innerHTML = data.map( (data) => {
-            return data[5]
+        document.getElementById("prayforBox").innerHTML = data.map( (data) => {
+            if( data[5] )return `${data[5]} <br> <br>`
+            else return '';
         }).join('')
+
+
+        const container = document.querySelector("#selectBtnBox");
+        const resultBox = document.querySelector("#resultBox");
+        document.querySelector('#messageBtn').addEventListener('click', () => {
+            container.querySelectorAll('button').forEach( (ele) => ele.classList.remove('active'))
+            container.querySelector('#messageBtn').classList.add('active')
+
+            resultBox.querySelectorAll('section').forEach( (ele) => ele.style.display = "none");
+            resultBox.querySelector("#messageBox").style.display ="block"
+        })
+
+        document.querySelector("#prayBtn").addEventListener('click', () => {
+            container.querySelectorAll('button').forEach( (ele) => ele.classList.remove('active'))
+            container.querySelector('#prayBtn').classList.add('active')
+            resultBox.querySelectorAll('section').forEach( (ele) => ele.style.display = "none");
+            resultBox.querySelector("#prayBox").style.display ="block"
+        })
+
+        document.querySelector("#prayforBtn").addEventListener('click', () => {
+            container.querySelectorAll('button').forEach( (ele) => ele.classList.remove('active'))
+            container.querySelector('#prayforBtn').classList.add('active')
+            resultBox.querySelectorAll('section').forEach( (ele) => ele.style.display = "none");
+            resultBox.querySelector("#prayforBox").style.display ="block"
+        })
     });
     
 }else {

@@ -16,15 +16,23 @@
 </head>
 
 <body style="font-family: 'Hahmlet', serif;">
-    
-    <div id="message"></div>
-    <br>
-    <div id="pray"></div>
-    <br>
+    <div id='title' style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem;"> 함 온 성</div>
 
-    <div id="prayFor"></div>
-    <br>
 
-    <button> 정산하기</button>
+    <div id="selectBtnBox" style="display: flex; font-size: 0.7rem; justify-content: center;">
+        <button id="messageBtn" class="active" style="border: none;border-radius: 1rem; margin-right:0.5rem"> 내게 주신 말씀</button>
+        <button id="prayBtn" class="none" style="border: none;border-radius: 1rem;margin-right:0.5rem">한줄기도 </button>
+        <button id="prayforBtn" class="none" style="border: none;border-radius: 1rem; margin-right:0.5rem">다른사람을 위한 기도</button>
+    </div>
+
+
+    <div id="resultBox">
+        <section id="messageBox" style="margin-top: 0.5rem;">
+            잠시만 기다려 주세요
+        </section>
+        <section id="prayBox" style="margin-top: 0.5rem; display: none;"></section>
+        <section id="prayforBox" style="margin-top: 0.5rem; display: none;"></section>
+    </div>
+
 </body>
 </html>

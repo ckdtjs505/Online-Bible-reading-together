@@ -1,5 +1,5 @@
-const BibleReadingsData = [
-    { date: '2024-1-2', lang: 'kor', book: '마태복음', start: '1', end: '4', dayCount: 2 },
+export const BibleReadingsData = [
+    { date: '2024-1-2', lang: 'kor', book: '마태복음', start: '1', end: '4', dayCount: 2 }, // 0 > 2
     { date: '2024-1-3', lang: 'kor', book: '마태복음', start: '5', end: '7', dayCount: 3 },
     { date: '2024-1-4', lang: 'kor', book: '마태복음', start: '8', end: '10', dayCount: 4 },
     { date: '2024-1-5', lang: 'kor', book: '마태복음', start: '11', end: '14', dayCount: 5 },
