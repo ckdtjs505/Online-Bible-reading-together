@@ -35,9 +35,8 @@ class UserContent {
     }
 
     addEvent(){
-		document.querySelector('#changeName').addEventListener('click', () => {
+		document.querySelector('#change').addEventListener('click', () => {
 			const name = document.querySelector('#nameInput').value;
-            document.querySelector("#closePopup").click();
             document.querySelector("#name").innerHTML = name;
             AppState.getInstance().userName = name;
 		});
