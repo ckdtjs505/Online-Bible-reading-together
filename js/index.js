@@ -80,8 +80,6 @@ if(document.location.pathname?.includes("/finish.html")){
         BibleTypeInit();
         calenderInit();
 
-        
-
         document.querySelector('#goFinish').addEventListener('click', () => {
             if( AppState.getInstance().userName == '' || AppState.getInstance().userName.length == 0  ){
                 document.querySelector("#changeName").click();
@@ -94,7 +92,6 @@ if(document.location.pathname?.includes("/finish.html")){
     
     let lastScroll;
     document.addEventListener('scroll', ()=> {
-        console.log('scroll')
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
     
         // 화면에 표시되는 높이 (viewport height)
