@@ -1,10 +1,16 @@
 import AppState from "../../shared/AppState.js";
 import Utils from "../../shared/utils.js";
-import { getReadingPlanForDate } from "../bibleReading/BibleReadingData.js";
+import { getReadingPlanForDate, setBibleReadingData } from "../bibleReading/BibleReadingData.js";
 import { bibleReadingTitle } from "../bibleReading/index.js";
 import { bibleVideoInit } from "../bibleVideo/index.js";
 import { setVerse } from "../dailyVerse/index.js";
 import { UserContentInit } from "../userContent/index.js";
+
+const bibleImgInit = (img) => {
+    document.querySelector("#imgContainer").innerHTML = 
+        img ? `<img  style="margin-top: 0.5rem; width: 100%;" src="${img}"></img>` : ''
+    
+}
 
 export default class CalendarView {
 	constructor() {
@@ -77,7 +83,8 @@ export default class CalendarView {
             const date = new Date(this.currentYear, this.currentMonth - 1, day);
             const dayOfWeek = date.getDay(); // 요일 체크 (0: 일요일, 6: 토요일)
 
-            const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${day}`)
+            setBibleReadingData(this.bibleReadingData)
+            const readingPlan = getReadingPlanForDate(new Date(`${this.currentYear}-${this.currentMonth}-${day}`))
             const { readingBooks, readingStart, readingEnd } = readingPlan?.reduce((acc, { book, start, end }) => {
                 acc.readingBooks.push(book);
                 acc.readingStart.push(start);
@@ -97,6 +104,8 @@ export default class CalendarView {
             }else if( dayOfWeek === 6) {
                 cell.classList.add('saturday');
             }
+            
+            if( readingPlan.length > 0 && readingPlan[0].isRead ) cell.classList.add('finish')
 
             cell.innerHTML = `${Utils.autoLeftPad(day, 2)}<br> ${cellHtml || ''}`
             cell.onclick  = () => {
@@ -104,7 +113,8 @@ export default class CalendarView {
                 AppState.getInstance().viewDayCnt = readingPlan[0]?.dayCount >= 70 ?  readingPlan[0]?.dayCount - 69 : readingPlan[0]?.dayCount;
                 bibleReadingTitle();
                 setVerse(readingPlan)
-                bibleVideoInit();
+                bibleVideoInit(readingPlan[0]?.url);
+                bibleImgInit(readingPlan[0]?.img)
                 UserContentInit();
                 this.setChoiceClear();
                 cell.classList.add('choiceDay');
@@ -137,7 +147,6 @@ export default class CalendarView {
         this.currentMonth = prevDate.getMonth() + 1; 
         this.renderCalenderYearMonth()
 		this.render();
-        this.setProgressInfo();
 	}
 
 	/**
@@ -151,7 +160,6 @@ export default class CalendarView {
         this.currentMonth = nextDate.getMonth() + 1; 
         this.renderCalenderYearMonth()
         this.render();
-        this.setProgressInfo();
     }
 
     selectToday(){
@@ -167,18 +175,4 @@ export default class CalendarView {
 		}
     }
 
-	setProgressInfo(){
-		var table = this.tbCalendar;
-		// 테이블의 모든 행을 순회
-		for (var i = 0, row; row = table.rows[i]; i++) {
-			// 각 행의 모든 셀을 순회
-			for (var j = 0, col; col = row.cells[j]; j++) {
-				// 여기서 col은 각 셀(열)을 나타냄, 필요한 작업 수행
-
-				if( this.userProgressData?.includes(parseInt(col.dataset.daycnt)) ){
-					col.classList.add('finish')
-				}
-			}
-		}
-	}
 }

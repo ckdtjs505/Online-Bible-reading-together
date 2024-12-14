@@ -1,8 +1,7 @@
 // import userProgressBibleReadingServices from "./userProgressBibleReadingServices.js";
 
 const GOOGLE_API = `https://script.google.com`;
-const GOOGLE_KEY = `AKfycbwHiTDeqtNUONNMdS5nekjTPponxGXkXMAM56So9S9LddNrGEk9kJY1QqlZelZefmUD`;
-
+const GOOGLE_KEY = `AKfycbztmenWywKE1JdlagNlP6juUmLH6_i271wUuEaHQWXvH_1LNdZqXTH7RqeqjcOKtmcc`;
 export default class UserProgressBibleReading {
     constructor(userId){
         this.userId = userId;
@@ -12,7 +11,7 @@ export default class UserProgressBibleReading {
 
         // return userProgressBibleReadingServices.getUserReadingProgress(this.userId);
         const queryParams = new URLSearchParams({
-            type: 'userProgress',
+            type: 'admin',
             userName : this.userId
         });
         return fetch(

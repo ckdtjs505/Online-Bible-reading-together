@@ -5,7 +5,7 @@ export default class BibleVideoService {
 		});
 
 		return fetch(
-			`https://script.google.com/macros/s/AKfycbxjekHGkkVHJrMGLCF8kjgskTG5u9RO_Syupi5NU4xuwFol0F1HtB-wygcAZEWKcGEu/exec?${queryParams}`,
+			`https://script.google.com/macros/s/AKfycbwD8c8UZED8cW3clChWkysu5M_ryzKUbnJM2WPAAitYNyh8B-V8lTA8l-inrKtnya_W/exec?${queryParams}`,
 			{
 				redirect: 'follow',
 				headers: {

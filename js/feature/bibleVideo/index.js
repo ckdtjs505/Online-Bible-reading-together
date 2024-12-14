@@ -1,12 +1,8 @@
 import BibleVideoDisplay from "./BibleVideoDisplay.js";
-import BibleVideoService from "./BibleVideoService.js";
 
-const bibleVideoInit = async () =>  {
-
+const bibleVideoInit = async (url) =>  {
     const display = new BibleVideoDisplay();
-    display.renderLoading();
-    const videoData = await new BibleVideoService().getVideoInfo();
-    display.render(videoData);
+    display.render(url);
 }
 
 export {bibleVideoInit}

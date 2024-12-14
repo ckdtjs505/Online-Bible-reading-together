@@ -80,14 +80,14 @@ if(document.location.pathname?.includes("/finish.html")){
         BibleTypeInit();
         calenderInit();
 
-        document.querySelector('#goFinish').addEventListener('click', () => {
-            if( AppState.getInstance().userName == '' || AppState.getInstance().userName.length == 0  ){
-                document.querySelector("#changeName").click();
-                alert('이름이 없습니다. 이름 입력 후 다시 시도해주세요.')
-            }else {
-                window.location.href = `./finish.html?userName=${AppState.getInstance().userName}`
-            }
-        }) 
+        // document.querySelector('#goFinish').addEventListener('click', () => {
+        //     if( AppState.getInstance().userName == '' || AppState.getInstance().userName.length == 0  ){
+        //         document.querySelector("#changeName").click();
+        //         alert('이름이 없습니다. 이름 입력 후 다시 시도해주세요.')
+        //     }else {
+        //         window.location.href = `./finish.html?userName=${AppState.getInstance().userName}`
+        //     }
+        // }) 
     });
     
     let lastScroll;

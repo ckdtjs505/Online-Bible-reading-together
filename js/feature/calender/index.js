@@ -5,11 +5,10 @@ import CalenderView from "./CalenderView.js";
 const calenderInit = async () => {
     const calenderView = new CalenderView();
     calenderView.renderSkeleton();
-    const userProgress = new UserProgressBibleReading(AppState.getInstance().userName);
-    const userProgressData = await userProgress.loadUserProgress();
+    const bibleReading = new UserProgressBibleReading(AppState.getInstance().userName);
+    const bibleReadingData = await bibleReading.loadUserProgress();
+    calenderView.bibleReadingData = bibleReadingData?.data || [];
     calenderView.render();
-    calenderView.userProgressData = userProgressData?.row || [];
-    calenderView.setProgressInfo();
     calenderView.selectToday();
 }
 

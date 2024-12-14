@@ -1,4 +1,4 @@
-export const BibleReadingsData = [
+export let BibleReadingsData = [
     { date: '2024-1-2', lang: 'kor', book: '마태복음', start: '1', end: '4', dayCount: 2 }, // 0 > 2
     { date: '2024-1-3', lang: 'kor', book: '마태복음', start: '5', end: '7', dayCount: 3 },
     { date: '2024-1-4', lang: 'kor', book: '마태복음', start: '8', end: '10', dayCount: 4 },
@@ -443,10 +443,14 @@ export const bookKeyNumber = (book) => {
     return result;
 }
 
-export const getReadingPlanForDate = (date) => {
+export const getReadingPlanForDate = (day) => {
     // 주어진 날짜에 해당하는 읽기 계획을 찾습니다.
-    const plan = BibleReadingsData.filter(plan => plan.date === date);
-
+    const plan = BibleReadingsData.filter(({ date }) => { 
+        const serverData = new Date(date);
+        return (serverData.getFullYear() === day.getFullYear() &&
+        serverData.getMonth() === day.getMonth() &&
+        serverData.getDate() === day.getDate())
+    });
     // 찾은 계획이 있다면, 해당 계획을 리턴합니다.
     if (plan && plan.length > 0) {
         return plan; // 일관된 배열 형태로 리턴
@@ -454,4 +458,10 @@ export const getReadingPlanForDate = (date) => {
         // 해당 날짜에 대한 계획이 없는 경우
         return [];
     }
+}
+
+
+export const setBibleReadingData = (data) => {
+    BibleReadingsData = data;
+    window.BibleReadingsData = data;
 }
