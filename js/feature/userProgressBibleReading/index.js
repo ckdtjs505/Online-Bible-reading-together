@@ -1,7 +1,7 @@
 // import userProgressBibleReadingServices from "./userProgressBibleReadingServices.js";
 
 const GOOGLE_API = `https://script.google.com`;
-const GOOGLE_KEY = `AKfycbztmenWywKE1JdlagNlP6juUmLH6_i271wUuEaHQWXvH_1LNdZqXTH7RqeqjcOKtmcc`;
+const GOOGLE_KEY = `AKfycbx59b6woS9-hkh8jkk93zrBUOSwbiI6JvBQT0-wdP-zxD_dNFrnL_t5WNvuulvzNtOq`;
 export default class UserProgressBibleReading {
     constructor(userId){
         this.userId = userId;

@@ -113,7 +113,7 @@ export default class CalendarView {
                 AppState.getInstance().viewDayCnt = readingPlan[0]?.dayCount >= 70 ?  readingPlan[0]?.dayCount - 69 : readingPlan[0]?.dayCount;
                 bibleReadingTitle();
                 setVerse(readingPlan)
-                bibleVideoInit(readingPlan[0]?.url);
+                bibleVideoInit(readingPlan[0]?.videoId);
                 bibleImgInit(readingPlan[0]?.img)
                 UserContentInit();
                 this.setChoiceClear();
