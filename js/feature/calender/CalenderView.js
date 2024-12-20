@@ -93,10 +93,6 @@ export default class CalendarView {
                 return acc;
             }, { readingBooks: [], readingStart: [], readingEnd: [] });
 
-            let a = document.createElement('div');
-            a.innerHTML = `readingPlan ${JSON.stringify(readingPlan) }, readingBooks : ${readingBooks}, ${readingStart} : readingStart, readingEnd : ${readingEnd}}`
-            document.body.append( a)
-
             let cellHtml;
             if( readingPlan.length > 0) {
                 cellHtml = `<div style="font-size: 0.5rem; margin: auto; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
