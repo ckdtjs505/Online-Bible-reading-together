@@ -446,10 +446,7 @@ export const bookKeyNumber = (book) => {
 export const getReadingPlanForDate = (day) => {
     // 주어진 날짜에 해당하는 읽기 계획을 찾습니다.
     const plan = BibleReadingsData.filter(({ date }) => { 
-        const serverData = new Date(date);
-        return (serverData.getFullYear() === day.getFullYear() &&
-        serverData.getMonth() === day.getMonth() &&
-        serverData.getDate() === day.getDate())
+        return (date.split('T')[0] === day)
     });
     // 찾은 계획이 있다면, 해당 계획을 리턴합니다.
     if (plan && plan.length > 0) {

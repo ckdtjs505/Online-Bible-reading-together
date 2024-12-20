@@ -84,7 +84,7 @@ export default class CalendarView {
             const dayOfWeek = date.getDay(); // 요일 체크 (0: 일요일, 6: 토요일)
 
             setBibleReadingData(this.bibleReadingData)
-            const readingPlan = getReadingPlanForDate(new Date(`${this.currentYear}-${this.currentMonth}-${day}`))
+            const readingPlan = getReadingPlanForDate(`${this.currentYear}-${this.currentMonth}-${day}`)
 
             const { readingBooks, readingStart, readingEnd } = readingPlan?.reduce((acc, { book, start, end }) => {
                 acc.readingBooks.push(book);
