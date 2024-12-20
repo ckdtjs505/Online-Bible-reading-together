@@ -17,7 +17,7 @@ export default class UserProgressBibleReading {
         return fetch(
             `${GOOGLE_API}/macros/s/${GOOGLE_KEY}/exec?${queryParams}`,
             {
-                redirect: 'follow',
+                // redirect: 'follow',
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8',
                 },
