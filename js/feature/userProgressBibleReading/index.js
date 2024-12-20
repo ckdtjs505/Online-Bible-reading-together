@@ -17,7 +17,7 @@ export default class UserProgressBibleReading {
         return fetch(
             `${GOOGLE_API}/macros/s/${GOOGLE_KEY}/exec?${queryParams}`,
             {
-                // redirect: 'follow',
+                redirect: 'follow',
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8',
                 },
@@ -27,6 +27,7 @@ export default class UserProgressBibleReading {
             const res =  response.json();
             return res;
         }).catch( (e) => {
+            alert(e, '에러가 발생했습니다. 스크린샷 후 담당자에게 전달주세요')
             console.error(`어드민 정보를 못가지고 옴`)
         });
         
