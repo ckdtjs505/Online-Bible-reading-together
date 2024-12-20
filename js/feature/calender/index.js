@@ -11,6 +11,8 @@ const calenderInit = async () => {
         calenderView.bibleReadingData = bibleReadingData?.data || [];
         calenderView.render();
         calenderView.selectToday();
+
+        alert( JSON.stringify(bibleReadingData)  );
     } catch (error) {
         alert(error + '에러가 발생했습니다. 스크린샷 후 담당자에게 전달주세요')
     }
