@@ -85,12 +85,17 @@ export default class CalendarView {
 
             setBibleReadingData(this.bibleReadingData)
             const readingPlan = getReadingPlanForDate(new Date(`${this.currentYear}-${this.currentMonth}-${day}`))
+
             const { readingBooks, readingStart, readingEnd } = readingPlan?.reduce((acc, { book, start, end }) => {
                 acc.readingBooks.push(book);
                 acc.readingStart.push(start);
                 acc.readingEnd.push(end);
                 return acc;
             }, { readingBooks: [], readingStart: [], readingEnd: [] });
+
+            let a = document.createElement('div');
+            a.innerHTML = `readingPlan ${JSON.stringify(readingPlan) }, readingBooks : ${readingBooks}, ${readingStart} : readingStart, readingEnd : ${readingEnd}}`
+            document.body.append( a)
 
             let cellHtml;
             if( readingPlan.length > 0) {
