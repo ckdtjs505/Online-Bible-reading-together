@@ -17,9 +17,7 @@ const setVerse = async (readingPlan, type) => {
     const promises = readingPlan.map( async ({start, end, lang, book})  =>  {
         let result;
 
-        if( AppState.getInstance().bibleType == "KRV"){
-            result = await DailyVerseService.getDailyVerse({ start, end, lang, book});
-        }else if( AppState.getInstance().bibleType == "KIV" ){
+        if( AppState.getInstance().bibleType == "KIV" ){
             result = await DailyVerseService.getDailyVerseInKIV({ start, end, lang, book});
         }else {
             result = await DailyVerseService.getDailyVerseInKorean({ start, end, lang, book});
